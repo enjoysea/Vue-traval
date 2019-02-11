@@ -1,0 +1,21 @@
+vuex状态持久化
+	https://blog.csdn.net/m0_38069630/article/details/79103287
+
+
+
+
+1、原理大家都懂，就是存localstorage.用法
+	npm install vuex-persistedstate
+
+
+2、状态管理的store.js中引入
+
+import createPersistedState from 'vuex-persistedstate'
+
+const store = new Vuex.Store({
+  
+	// ...
+    
+	plugins: [createPersistedState()]  //加上这个就可以了
+
+})
