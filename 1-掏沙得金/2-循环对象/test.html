@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <script src="./src/vue.js"></script>
+</head>
+
+<body>
+<!--是Vue的模板-->
+<div id="app">
+  <h1>学习vue</h1>
+  <ul>
+    <li v-for="(item,index) in arr">
+      {{item}} - {{index}}
+    </li>
+  </ul>
+  <p v-for="value,key,index in obj">
+    {{value}} - {{key}} - {{index}}
+  </p>
+</div>
+<script>
+  /*
+   循环列表，生成结构
+   v-for使用在需要根据数据生成的结构上
+   v-for
+   语法：
+   v-for="item,index of 数组"
+   v-for="a,b in 数组"
+   v-for="a in 数组"
+   v-for="a,b,index in 对象"
+
+   循环对象中index是当前这个属性在整个对象中位置
+   item,index只是变量名，随便定义
+   */
+
+  var arr = [1, 2, 3, 4];
+
+  let vm = new Vue({
+    el: '#app',
+    data: {
+      arr, // arr:arr
+      obj: { // 循环对象
+        a: 1,
+        b: 2,
+        c: 3
+      }
+    }
+  });
+
+  var o = {
+    c: 2,
+    b: 3,
+    a: 1
+  };
+
+  // ["c", "b", "a"]
+  console.log(Object.keys(o));
+
+</script>
+</body>
+</html>
