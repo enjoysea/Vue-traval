@@ -7,7 +7,6 @@ vuex状态持久化
 
 
 2、状态管理的store.js中引入
-
 	import createPersistedState from 'vuex-persistedstate'
 
 	const store = new Vuex.Store({
