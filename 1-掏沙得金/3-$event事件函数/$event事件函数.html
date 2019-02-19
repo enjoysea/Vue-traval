@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>事件对象</title>
+  <script src="./src/vue.js"></script>
+</head>
+<body>
+<!--是Vue的模板-->
+<div id="app">
+  <h1 v-on:click="study">学习vue</h1>
+  <button v-on:click="add">添加</button>
+  <ul>
+    <li v-for="item,index in list">
+      {{item}}
+      <button v-on:click='remove(index, $event)'>删除</button>
+    </li>
+
+  </ul>
+</div>
+<script>
+  // 响应式的数据绑定
+  // 不要尝试去操作DOM，忘记操作DOM这回事
+  // 操作数据
+
+  /*
+   事件对象的两种展现形式：
+
+   v-on:事件名="方法"
+   事件对象是这个方法的第一参数
+
+   v-on:事件名="方法()" // 不会直接调用函数，只有点击时候才会调用，方便从模板这边传参给函数
+   事件对象需要在模板中手动传入,$event
+   */
+
+
+  let vm = new Vue({
+    el: '#app',
+    data: {
+      list: [1],
+      a: ''  // 初始状态，就是空数组
+    },
+    methods: {
+      add(ev){
+        console.log(ev);
+        this.list.push(Math.random());
+      },
+      // 形式一：视图函数带括号
+      remove(i, e){
+        console.log(e);
+        this.list.splice(i, 1);
+      },
+      // 形式二：视图函数不带括号
+      study(e){
+        // 事件对象是这个方法的第一参数
+        console.log(e);
+      }
+    }
+  });
+
+  /*setTimeout(function (){
+   vm.$mount('#app')
+   },2000)*/
+
+
+</script>
+</body>
+</html>
