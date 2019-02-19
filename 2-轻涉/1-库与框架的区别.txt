@@ -7,5 +7,6 @@
 而且控制权在框架本身，使用者要按照框架所规定的某种规范进行开发
 代表：backbone、angulare、vue
 
+
 backone 老古董，后来在前端用的太麻烦，就废弃掉了，转用augular(MVVM)
 
