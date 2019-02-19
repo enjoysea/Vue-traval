@@ -43,12 +43,12 @@
         console.log(ev);
         this.list.push(Math.random());
       },
-      // 形式一：视图函数带括号
+      // 事件对象$event形式一：视图函数带括号
       remove(i, e){
         console.log(e);
         this.list.splice(i, 1);
       },
-      // 形式二：视图函数不带括号
+      // 事件对象$event形式二：视图函数不带括号
       study(e){
         // 事件对象是这个方法的第一参数
         console.log(e);
