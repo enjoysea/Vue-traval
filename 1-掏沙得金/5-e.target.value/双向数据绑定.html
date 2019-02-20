@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <script src="./src/vue.js"></script>
+</head>
+<body>
+<!--是Vue的模板-->
+<div id="app">
+  <input
+    type="text"
+    v-model="val"
+    @input="changeValue"
+  />
+  <p>{{val}}</p>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      val: ''
+    },
+    methods: {
+      changeValue(e){
+        console.log(e.target)
+        console.log(e.target.value)
+      }
+    }
+  })
+</script>
+</body>
+</html>
