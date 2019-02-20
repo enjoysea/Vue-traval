@@ -10,21 +10,26 @@
 <div id="app">
   <input
     type="text"
-    v-model="val"
+    :value="val"
     @input="changeValue"
   />
   <p>{{val}}</p>
+  <hr/>
+  <input v-model="val2" type="text">
+  <p>{{val2}}</p>
 </div>
 <script>
   new Vue({
     el: '#app',
     data: {
-      val: ''
+      val: '',
+      val2: ''
     },
     methods: {
       changeValue(e){
         console.log(e.target)
         console.log(e.target.value)
+        this.val = e.target.value
       }
     }
   })
