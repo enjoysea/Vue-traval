@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			.red {
+				background: red;
+			}
+			.rontSize {
+				font-size: 50px;
+			}
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<!--是Vue的模板-->
+		<div id="app">
+			<h1>学习vue</h1>
+			<button v-on:click="show = !show">切换</button>
+			<p v-bind:class="{red: show}" class="rontSize">测试calss</p>
+			<div v-bind:style="{color: show ? 'red' : 'blue'}">测试style</div>
+		</div>
+		<script>
+			let message = 'hello,vue';
+			/*
+				处理样式
+					class 根据某个条件判断class是删除还是添加
+						v-bind:class="{class名字:表达式}"
+							根据表达式的true或false，来决定是否这个元素添加删除class
+					style
+						v-bind:style="{display: block|none}"
+						v-bind:style="{color: red|yellow}"
+						v-bind:style="{background: red|yellow}"
+
+			*/
+			
+			new Vue({
+				el: '#app',
+				data: {  
+					show: true 
+				}
+			})
+
+		</script>
+	</body>
+</html>
