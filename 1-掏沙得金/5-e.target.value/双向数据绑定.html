@@ -17,13 +17,22 @@
   <hr/>
   <input v-model="val2" type="text">
   <p>{{val2}}</p>
+  <hr/>
+  <h2>v-model就相当于以下：</h2>
+  <input
+    type="text"
+    :value = "val3"
+    @input="(e) => val3 = e.target.value"
+  />
+  <p>{{val3}}</p>
 </div>
 <script>
   new Vue({
     el: '#app',
     data: {
       val: '',
-      val2: ''
+      val2: '',
+      val3: ''
     },
     methods: {
       changeValue(e){

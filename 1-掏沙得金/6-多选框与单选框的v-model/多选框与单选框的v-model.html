@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>radio v-model</title>
+  <style>
+    #box div {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+      display: none;
+    }
+    .yellow {
+      background: yellow;
+    }
+  </style>
+  <script src="./src/vue.js"></script>
+</head>
+<body>
+<!--是Vue的模板-->
+<div id="app">
+  <input type="checkbox" v-model="selected"/>
+  {{selected}}
+  <hr>
+  <!--当他选中的时候，要value值-->
+  <input type="radio" value="0" v-model="single" name="sex"/>
+  <label>男</label>
+  <input type="radio" value="1" v-model="single" name="sex"/>
+  <label>女</label>
+  <input type="radio" value="-1" v-model="single" name="sex"/>
+  <label>保密</label>
+  {{single}}
+</div>
+<script>
+
+
+  new Vue({
+    el: '#app',
+    data: {
+      selected: true,
+      single: ''
+    }
+  })
+
+
+</script>
+</body>
+</html>
