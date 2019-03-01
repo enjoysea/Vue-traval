@@ -1,0 +1,13 @@
+
+一、不得不操作DOM的情况
+	1、input focus
+	2、动画
+	3、window绑定事件
+	4、document绑定事件
+
+
+二、一般在挂载结束后获取元素
+
+	mounted (){ // 挂载结束
+		console.log('mounted')
+	}	

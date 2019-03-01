@@ -1,0 +1,76 @@
+
+一、ref 
+
+1、操作元素
+	<input id="edit" ref="miaov" />
+	console.log(this.$refs.miaov)
+
+--------------------------------------------------------------------
+
+2、ref定义在行间属性中，类似于id一样
+	找元素通过实例的$refs
+
+--------------------------------------------------------------------
+
+3、ref存在的问题
+	数据更新
+	元素操作
+
+	getFocus () {
+		// 不是设置一个更新一条，而是设置完毕一次更新
+		// 异步更新
+		// setTimeout promise setInterval 几个都是异步的
+		this.m = 123;
+		this.show = true;
+		this.$refs.miaov.focus();
+	}
+
+	应该在数据更新完后，再去操作元素
+
+--------------------------------------------------------------------
+
+4、如何知道数据更新完成？
+	
+	getFocus () {		
+		this.m = 123;
+		this.show = true;
+
+		// 全局：Vue.nextTick()
+
+		// 实例：
+		this.$nextTick(()=>{ // 等数据全部更新完再去获取焦点
+			this.$refs.miaov.focus();
+		})
+
+	}
+
+--------------------------------------------------------------------
+
+5、循环同名的处理
+	<ul>
+        	<li ref="ketang" v-for="item in 10">测试{{item}}</li>
+    	</ul>
+
+	如果ref是用在v-for上，$refs中会存的是一个数组	
+		ref = 'ketang'
+		{
+			ketang: [li, li]
+		}
+
+		
+	// 编辑
+	editTodo(id, index) {
+		this.editId = id;
+		console.log(this.editId)
+
+		// 数据更新完再获取焦点
+		this.$nextTick(()=>{
+			this.$refs.miaov[index].focus()
+		})
+		
+	}
+
+
+
+
+
