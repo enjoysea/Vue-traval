@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="../../src/vue.js"></script>
+</head>
+
+<body>
+<section id="app" class="todoapp">
+    <header class="header">
+        <h1>todos</h1>
+        <input
+                class="new-todo"
+                placeholder="请输入内容"
+                @keyup.13="add"
+                v-model="title"
+
+        />
+    </header>
+    <section class="main" v-show="list.length">
+        <input class="toggle-all" type="checkbox" v-model="isSelectedAll"/>
+        <ul class="todo-list">
+            <!--
+                editing - 编辑状态
+                completed - 选中状态
+            -->
+            <li class=""
+                v-for="item,index in filterList"
+                :class="{completed:item.selected,editing:editId === item.id}"
+            >
+                <div class="view">
+                    <input v-model="item.selected" class="toggle" type="checkbox"/>
+                    <label @dblclick="editTodo(item.id,index)">{{item.title}}</label>
+                    <button class="destroy" @click="remove(item)"></button>
+                </div>
+                <input
+                        ref="miaov"
+                        class="edit"
+                        v-model="item.title"
+                        @blur="editDone(item)"
+                        @keydown.13="editDone(item)"
+                        @keydown.esc="cancelEdit(item)"
+                />
+            </li>
+        </ul>
+    </section>
+    <footer class="footer" v-show="list.length">
+        <span class="todo-count">
+            <strong>{{unSelectedLen}}</strong>
+            <span>条未选中</span>
+        </span>
+        <ul class="filters">
+            <li><a href="#/all" :class="{selected:hash==='all'}">All</a></li>
+            <li><a href="#/active" :class="{selected:hash==='active'}">Active</a></li>
+            <li><a href="#/completed" :class="{selected:hash==='completed'}">Completed</a></li>
+        </ul>
+    </footer>
+
+</section>
+<script src="./index.js"></script>
+</body>
+
+</html>

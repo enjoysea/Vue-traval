@@ -1,0 +1,16 @@
+﻿
+一、computed get()与set()函数
+
+<input class="toggle-all" type="checkbox" v-model="isSelectedAll"/>
+
+computed: {
+	isSelectedAll: {
+      		get(){
+			return this.list.every(item => item.selected)
+        		// return this.list.filter(item => item.selected).length === this.list.length
+      		},
+      		set(newValue){
+        		this.list.forEach(item => item.selected = newValue)
+     		}
+	}
+}
