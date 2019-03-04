@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>	
+			
+			var arr = {a:1}; // 转成字符串
+			//localStorage.setItem('miaov',arr)
+			localStorage.setItem('miaov',JSON.stringify(arr));
+
+			let o = JSON.parse(localStorage.getItem("miaov")); //解析成对象
+
+			console.log(o);
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>
