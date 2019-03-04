@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+  <script src="./src/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+  <h1>启动项目</h1>
+  <button @click="m = 123">改变</button>
+  {{m}}
+  <hr>
+  <button @click="obj.a.b = '改变了'">改变</button>
+  {{obj.a.b}}
+</div>
+<script>
+
+  var message = 'hello,vue';
+
+  var vm = new Vue({
+    el: '#app',
+    watch: { // key值就是要监控的属性
+      m(newValue, oldValue){
+        console.log('改变了m', newValue, oldValue);
+      },
+      'obj.a.b'(newValue, oldValue){
+        console.log('改变了obj.a.b', newValue, oldValue);
+      },
+      // 深度监控  稍微消耗性能
+      'obj': {
+        deep: true,
+        handler(newValue, oldValue){
+          console.log('改变了obj', newValue, oldValue);
+        },
+        // 一上来就执行一次（在单页应用，view-router是有用的）
+        immediate: true
+      }
+    },
+    data: {
+      m: message,
+      obj: {
+        a: {
+          b: 'hello'
+        }
+      }
+    }
+  });
+
+  // 写上数据对象中的key值，key值的数据对象的路径
+  /* vm.$watch('m',function (newValue,oldValue){
+   console.log(newValue,oldValue);
+   })
+
+   vm.$watch('obj.a.b',function (newValue,oldValue){
+   console.log(newValue,oldValue);
+   }) */
+
+</script>
+</body>
+</html>
