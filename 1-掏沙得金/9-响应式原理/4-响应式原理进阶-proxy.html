@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+
+  </style>
+  <script>
+    /*
+     Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。Proxy 这个词的原意是代理，用在这里表示由它来“代理”某些操作，可以译为“代理器”。
+     */
+
+
+    let o = {
+      a: 1,
+      b: 2
+    }
+
+    /*var obj = new Proxy(o,{
+     get(target, key, receiver){
+     // target 是代理的目标对象，就是o
+     // key是访问的属性
+     // receiver 经过Proxy代理之后返回的对象，就是obj
+     console.log('取值',target, key, receiver);
+     return target[key];
+     },
+     set(target,key,newValue){
+     console.log("设置值");
+     target[key] = newValue;
+     }
+     })
+
+     console.log( o );
+
+     obj.a = 10000000;
+
+     console.log(obj.a);
+     console.log(obj.b);
+
+     console.log( obj );*/
+
+
+    function observer(data, cb) {
+      return new Proxy(data, {
+        get(target, key){
+          return target[key]
+        },
+        set(target, key, newValue){
+          target[key] = newValue;
+          cb();
+        }
+      })
+    }
+
+  </script>
+</head>
+
+<body>
+<button id="change_name">改变姓名</button>
+<button id="change_age">改变年龄</button>
+<p id="name">姓名：XXX</p>
+<p id="age">年龄：XXXX</p>
+<script>
+  var data = {
+    name: 'leo',
+    age: 18
+  }
+
+  // 代理 转成getter和setter形式
+
+  data = observer(data, function () {
+    render();
+  });
+
+  // 原生做法
+
+  var namep = document.querySelector('#name')
+  var age = document.querySelector('#age')
+
+  var change_name = document.querySelector('#change_name')
+  var change_age = document.querySelector('#change_age')
+
+  function render() {
+    namep.innerText = '姓名：' + data.name;
+    age.innerText = '年龄：' + data.age;
+  }
+
+  render();
+
+  change_name.onclick = function () {
+    data.name = 'jon';
+  }
+  change_age.onclick = function () {
+    data.age = '60';
+  }
+
+</script>
+</body>
+</html>
