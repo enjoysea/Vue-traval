@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<h1>设置set函数</h1>
+			<p>{{m}}</p>
+			<button @click="list.miaov='change'">改变miaov</button>
+			<button @click="addProp">添加属性</button>
+			<p>{{list.miaov}}</p>
+			<p>{{list.ketang}}</p>
+		</div>
+		<script>
+			/*let data = {
+				m: 'hello'
+			}*/
+
+			/*
+				一开始在数据对象中写上的数据，会被劫持，转称setter和setter，
+				当数据发生变化，是可响应的，自动更新界面
+
+				之后再添加的属性，就不是响应的
+
+				之后添加的属性还是响应的？
+			*/
+
+			let vm = new Vue({
+				el: '#app',
+				data: {
+					m: 'hello',
+					list:{
+						miaov:1
+					}
+				},
+				methods:{
+					addProp(){
+						//this.list.ketang  =123;
+						this.$set(this.list,'ketang',123)
+					}
+				}
+			});
+
+
+
+		</script>
+	</body>
+</html>
