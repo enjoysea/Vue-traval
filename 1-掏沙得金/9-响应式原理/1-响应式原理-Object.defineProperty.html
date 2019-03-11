@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			/*
+				Object.defineProperty()
+					定义属性、改变属性的描述
+
+				数据描述
+						configurable   是否可以删除目标属性。默认为false
+						enumerable    此属性是否可以被枚举。默认为false
+						value               该属性对应的值，默认为 undefined
+						writable          属性的值是否可以被重写。默认为false
+				存取器描述
+						getter 是一种获得属性值的方法
+						setter是一种设置属性值的方法。
+						可以写configurable  、enumerable    
+						不能写value     writable      
+			*/
+
+			var o = {
+				a:1
+			}
+			var val = 1;
+			Object.defineProperty(o,'b',{
+				get(){
+					console.log('取值');
+					return val;
+				},
+				set(newValue){
+					console.log('设置值',newValue);
+					val = newValue
+
+				}
+			})
+			o.b = 100000;
+			console.log(o.b);
+
+			console.log(o);
+
+
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>

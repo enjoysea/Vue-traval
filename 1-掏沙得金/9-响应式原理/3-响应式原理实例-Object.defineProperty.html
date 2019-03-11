@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+
+  </style>
+  <script>
+    /*
+     Object.defineProperty()
+     定义属性、改变属性的描述
+
+     数据描述
+     configurable   是否可以删除目标属性。默认为false
+     enumerable    此属性是否可以被枚举。默认为false
+     value               该属性对应的值，默认为 undefined
+     writable          属性的值是否可以被重写。默认为false
+     存取器描述
+     getter 是一种获得属性值的方法
+     setter是一种设置属性值的方法。
+     可以写configurable  、enumerable
+     不能写value     writable
+     */
+
+    var o = {
+      a: 1,
+      b: 2
+    }
+
+    console.log(Object.keys(o));
+
+    function observer(data, cb) {
+      Object.keys(data).forEach(item => {
+        reactive(data, item, data[item], cb)
+      })
+    }
+
+    function reactive(obj, prop, value, cb) {
+      Object.defineProperty(obj, prop, {
+        get(){
+          return value;
+        },
+        set(newValue){
+          value = newValue
+          cb();
+        }
+      })
+    }
+
+  </script>
+</head>
+
+<body>
+<button id="change_name">改变姓名</button>
+<button id="change_age">改变年龄</button>
+<p id="name">姓名：XXX</p>
+<p id="age">年龄：XXXX</p>
+<script>
+  var data = {
+    name: 'leo',
+    age: 18
+  }
+
+  // 代理 转成getter和setter形式
+
+  observer(data, function () {
+    render();
+  });
+
+  console.log(data);
+
+  // 原生做法
+
+  var namep = document.querySelector('#name')
+  var age = document.querySelector('#age')
+
+  var change_name = document.querySelector('#change_name')
+  var change_age = document.querySelector('#change_age')
+
+  function render() {
+    namep.innerText = '姓名：' + data.name;
+    age.innerText = '年龄：' + data.age;
+  }
+
+  render();
+
+  // 点击修改值
+  change_name.onclick = function () {
+    data.name = 'jon';
+  }
+  change_age.onclick = function () {
+    data.age = '60';
+  }
+
+</script>
+</body>
+</html>
