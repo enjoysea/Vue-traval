@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+  <script src="./src/vue.js"></script>
+</head>
+
+<body>
+<div id="app" v-cloak>
+  <h1>设置set函数</h1>
+
+  <!--使用{{}}注意与上面的样式[v-cloak]配合使用-->
+  <p>{{m}}</p>
+  <!--更新元素的 textContent，可代替{{}}-->
+  <!-- v-text用法 -->
+  <p v-text="m"></p> <!--v-text类似{{}}-->
+  <p v-once>{{m}}</p>
+</div>
+<script>
+  /*
+   只渲染一次，随后数据改变将不再重新渲染，视为静态内容，
+   用于优化更新性能
+   */
+
+  let vm = new Vue({
+    data: {
+      m: 'hello'
+    },
+  });
+
+  setTimeout(function () {
+    vm.$mount('#app')
+  }, 1000)
+
+
+</script>
+</body>
+</html>

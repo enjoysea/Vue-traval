@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+  <script src="./src/vue.js"></script>
+</head>
+
+<body>
+<div id="app" v-cloak>
+  <h1>设置set函数</h1>
+  <p>{{m}}</p>
+  <!--更新元素的 textContent，可代替{{}}-->
+  <p v-text="m"></p>
+  <p v-once>{{m}}</p>
+  <input type="password" id="pas"/>
+  <hr>
+  <div>
+    {{html}}
+  </div>
+  <div v-html="html"></div>
+  <button @click="append">插入内容</button>
+</div>
+<script>
+  /*
+   只渲染一次，随后数据改变将不再重新渲染，视为静态内容，
+   用于优化更新性能
+
+   {{}} 里面的内容都是文本形式，如果是html结构并不会解析为DOM
+
+   v-html 给的html结构是可靠
+
+   xss 找漏洞攻击
+
+   */
+
+  let vm = new Vue({
+    data: {
+      m: 'hello',
+      html: ''
+    },
+    methods: {
+      append(){
+        this.html = `<div>我是模板<img src="" onerror="console.log(123);console.log(document.getElementById('pas').value)"/></div>`
+      }
+    }
+  });
+
+  setTimeout(function () {
+    vm.$mount('#app')
+  }, 1000)
+
+
+</script>
+</body>
+</html>
