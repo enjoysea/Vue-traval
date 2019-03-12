@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+		<script type="text/x-template" id="news-template">
+			<div>
+				<h2>娱乐<span>X</span></h2>
+				<ul>
+					<li>电影</li>
+					<li>电影</li>
+					<li>电影</li>
+					<li>电影</li>
+				</ul>
+				<ul>
+					<li>电影</li>
+					<li>电影</li>
+					<li>电影</li>
+					<li>电影</li>
+				</ul>
+			</div>
+		</script>
+	</head>
+
+	<body>
+
+		<div id="app">
+			{{m}}
+			<custom></custom>
+			<news></news>
+		</div>
+
+		<script>
+			// 第二参数为对象，内部会调用vue.extend
+			/*
+				选项对象
+					组件的选项对象没有 el
+					组件的data，必须是函数
+
+				template
+					组件的模板，只能有一个顶层标签
+
+				组件
+					最基本的组成 html结构
+					交互 js
+					样式
+
+				注册组件
+					全局注册
+						Vue.component()
+						在任意组件都可以使用
+						
+					局部注册
+						在组件的选项对象的
+							components:{
+								标签名：组件的选项对象
+							}
+						在那个组件中注册的，就在那个组件的模板中使用
+			*/
+
+			// 全局注册
+			//Vue.component('news',)
+
+			Vue.component('custom', {
+				template: `
+					<div>
+						<h2>渲染news组件</h2>
+						<!--在这个组件中是找不到news这个组件的，因为是局部组件-->
+						<!--<news></news>-->
+					</div>
+				`
+			})
+
+			var vm = new Vue({
+				//el: '#app',
+				data:{
+					m: 'hello'
+				},
+				components:{ // news 这个组件只能在 #app这个模板中使用
+					news:  {
+						template: `#news-template`
+					}
+				}
+			})
+
+			vm.$mount('#app')
+		</script>
+		
+	</body>
+</html>
