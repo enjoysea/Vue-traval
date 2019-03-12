@@ -57,17 +57,17 @@
       }
     },
     template: `<div>
-							<h2>{{title}}<span>X</span></h2>
-							<list :l = 'list'></list>
-						</div>`
+      <h2>{{title}}<span>X</span></h2>
+      <list :l = 'list'></list>
+    </div>`
   });
 
   Vue.component('list', {
     props: ['l'],
     template: `
-					<ul>
-						<li v-for="item in l">{{item}}</li>
-					</ul>
+      <ul>
+        <li v-for="item in l">{{item}}</li>
+      </ul>
 				`
   });
 
