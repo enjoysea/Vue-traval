@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <script src="./src/vue.js"></script>
+  <script type="text/x-template" id="news-template">
+    <div>
+      <h2>{{title}}<span>X</span></h2>
+      <list></list>
+    </div>
+  </script>
+</head>
+
+<body>
+
+<div id="app">
+  <news title="体育" :list="list"></news>
+  <!--:title="'娱乐'" 里面是一个表达式-->
+  <news :title="'娱乐'" :list="list2"></news>
+  <news title="新闻"></news>
+</div>
+
+<script>
+  // 如果value值需要去取值，需要动态绑定用v-bind
+  // 验证props
+
+  // 全局注册
+  Vue.component('news', {
+    props: ['title', 'list'],
+    template: `<div>
+      <h2>{{title}}<span>X</span></h2>
+      <list :l = 'list'></list>
+    </div>`
+  });
+
+  Vue.component('list', {
+    props: ['l'],
+    template: `
+					<ul>
+						<li v-for="item in l">{{item}}</li>
+					</ul>
+				`
+  });
+
+  var vm = new Vue({
+    //el: '#app',
+    data: {
+      m: 'hello',
+      list: [1, 2, 3, 4, 5, 6, 7],
+      list2: 123
+    }
+  })
+
+  vm.$mount('#app')
+</script>
+
+</body>
+</html>

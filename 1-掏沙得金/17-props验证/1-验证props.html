@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+
+  </style>
+  <script src="./src/vue.js"></script>
+  <script type="text/x-template" id="news-template">
+    <div>
+      <h2>{{title}}<span>X</span></h2>
+      <list></list>
+    </div>
+  </script>
+</head>
+
+<body>
+
+<div id="app">
+  <news :num="10" title="体育" :list="list"></news>
+  <news :num="20" :title="'娱乐'" :list="list2"></news>
+  <news :num="30"></news>
+</div>
+
+<script>
+  // 如果value值需要去取值，需要动态绑定用v-bind
+
+  // 验证props
+
+  var a = 10;
+
+  // 全局注册
+  Vue.component('news', {
+    props: {
+      title: {
+        type: String,
+        default: '默认的标题'
+      },
+      list: {
+        type: [Array, Object],
+        //default: []
+        // 如果是数组或对象，必须按照以下的方式来写（工厂函数）
+        default() {  // 工厂函数
+          return [] // 防止这个数组被多个地方引用
+        }
+      },
+      /*num:{
+       type: Number,
+       required: true
+       }*/
+      num: {
+        validator(value){
+          console.log(value);
+          return value > 20;
+        }
+      }
+    },
+    template: `<div>
+							<h2>{{title}}<span>X</span></h2>
+							<list :l = 'list'></list>
+						</div>`
+  });
+
+  Vue.component('list', {
+    props: ['l'],
+    template: `
+					<ul>
+						<li v-for="item in l">{{item}}</li>
+					</ul>
+				`
+  });
+
+  var vm = new Vue({
+    //el: '#app',
+    data: {
+      m: 'hello',
+      list: [1, 2, 3, 4, 5, 6, 7],
+      list2: ['a', 'b', 'c']
+    }
+  })
+
+  vm.$mount('#app')
+</script>
+
+</body>
+</html>
