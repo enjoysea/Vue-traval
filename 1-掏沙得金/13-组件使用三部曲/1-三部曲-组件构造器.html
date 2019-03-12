@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <script src="./src/vue.js"></script>
+</head>
+
+<body>
+
+<div id="app">
+  {{m}}
+
+  <!-- step3：使用组件 -->
+  <news></news>
+</div>
+
+<script>
+  // 组件就是一个类（构造函数）
+
+  // 子构造器 传入的参数是选项对象和根实例传入的一样（除了挂载点）
+
+  // step1：通过Vue.extend()来创建一个子构造器
+  var child = Vue.extend({
+    template: `
+      <div>hello，vue</div>
+    `
+  });
+
+  // 注册成组件
+  /*
+   Vue.component(组件id/组件标签名，子构造器 )
+   组件标签名 未来要像标签一样使用在模板
+  */
+
+  // step2：注册成组件
+  Vue.component('news', child)
+
+  // child是一个函数
+  console.log(child);
+
+  // 这个是根实例
+  var vm = new Vue({
+    //el: '#app',
+    data: {
+      m: 'hello'
+    }
+  })
+
+  vm.$mount('#app')
+</script>
+
+</body>
+</html>

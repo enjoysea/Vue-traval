@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+
+  </style>
+  <script src="./src/vue.js"></script>
+  <script type="text/x-template" id="news-template">
+    <div>
+      <h2>娱乐<span>X</span></h2>
+      <ul>
+        <li>电影</li>
+        <li>电影</li>
+        <li>电影</li>
+        <li>电影</li>
+      </ul>
+      <ul>
+        <li>电影</li>
+        <li>电影</li>
+        <li>电影</li>
+        <li>电影</li>
+      </ul>
+    </div>
+  </script>
+</head>
+
+<body>
+
+<div id="app">
+  {{m}}
+  <news></news>
+  <news></news>
+  <news></news>
+</div>
+
+<script>
+  // 第二参数为对象，内部会调用vue.extend
+
+  /*
+    选项对象
+      组件的选项对象没有 el
+      组件的data，必须是函数
+
+    template
+      组件的模板，只能有一个顶层标签
+
+    组件
+      最基本的组成 html结构
+      交互 js
+      样式
+  */
+
+  // 全局注册
+  // 省略step1，直接step2
+  // 第二个参数为对象，内部会调用vue.extend
+
+  // 模板太长，可以直接写在js里
+  Vue.component('news', {
+    template: `#news-template`
+  })
+
+  Vue.component('custom', {
+    template: `
+      <div>
+        <h2>渲染news组件</h2>
+        <news></news>
+      </div>
+    `
+  })
+
+  var vm = new Vue({
+    //el: '#app',
+    data: {
+      m: 'hello'
+    }
+  })
+
+  vm.$mount('#app')
+</script>
+
+</body>
+</html>
