@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+
+  </style>
+  <script src="./src/vue.js"></script>
+  <script type="text/x-template" id="news-template">
+    <div>
+      <h2>{{title}}<span>X</span></h2>
+      <ul>
+        <li>电影</li>
+        <li>电影</li>
+        <li>电影</li>
+        <li>电影</li>
+      </ul>
+      <ul>
+        <li>电影</li>
+        <li>电影</li>
+        <li>电影</li>
+        <li>电影</li>
+      </ul>
+    </div>
+  </script>
+</head>
+
+<body>
+
+<div id="app">
+  <news title="体育"></news>
+  <news title="娱乐"></news>
+  <news title="新闻"></news>
+</div>
+
+<script>
+  // 函数封装 复用 通用
+
+  /*
+   复用 封装一段代码，调用函数
+   通用 通过传参
+   */
+
+  /*function add(a,b){
+   return a + b;
+   }*/
+
+  /*
+   定制数据
+   给组件传递数据
+   写在组件标签对作为自定义的属性
+   组件接收
+   选项对象的
+   props:[接收的key值（标签上的自定属性的key值）,,,,]
+   */
+
+  // 全局注册
+  var n = Vue.component('news', {
+    props: ['title'],  // 会挂载在当前组件的实例上,可以直接在模板中使用
+    template: `#news-template`
+  });
+
+  var vm = new Vue({
+    //el: '#app',
+    data: {
+      m: 'hello'
+    }
+  })
+
+  vm.$mount('#app')
+</script>
+
+</body>
+</html>
