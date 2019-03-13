@@ -49,12 +49,12 @@
     }
     },
     template: `
-					<div>
-						<!--<button @click="user.name=123">改变props中的user</button>-->
-						<button @click="changeUser">改变props中的user</button>
-						<p>{{customUser.name}}</p>
-					</div>
-				`,
+      <div>
+        <!--<button @click="user.name=123">改变props中的user</button>-->
+        <button @click="changeUser">改变props中的user</button>
+        <p>{{customUser.name}}</p>
+      </div>
+    `,
     methods: {
       changeUser(){  // 不能改变user对应的值
         // this.user = {name: 'jon'}
