@@ -1,0 +1,5 @@
+data () {
+  return {
+    message: 'hello，我是news组件'
+  }
+}
