@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+
+  </style>
+  <script src="./src/vue.js"></script>
+  <script type="text/x-template" id="news-template">
+    <div>
+      <h2>{{title}}<span>X</span></h2>
+      <list></list>
+    </div>
+  </script>
+</head>
+
+<body>
+
+<div id="app">
+  <news :user="user"></news>
+  <hr/>
+  <users :user="user"></users>
+</div>
+
+<script>
+  /*
+   自身数据
+   随便改
+   外部定制的数据
+   不能更改
+
+   组件内部的操作不能影响外部
+
+   父组件-> 子组件通信 props
+   子组件 -> 父组件 custom event
+   订阅发布模式
+
+   以下演示使用对象演示，说明内部改变了外面的数据影响了外面。
+   */
+  Vue.component('news', {
+    props: ['user'],
+    data(){
+      return {
+        // 这样修改也是不可以的
+        // customUser: this.user
+        // 不要直接修改user对象，可以复制出一份出来
+        customUser: {...this.user}
+    }
+    },
+    template: `
+					<div>
+						<!--<button @click="user.name=123">改变props中的user</button>-->
+						<button @click="changeUser">改变props中的user</button>
+						<p>{{customUser.name}}</p>
+					</div>
+				`,
+    methods: {
+      changeUser(){  // 不能改变user对应的值
+        // this.user = {name: 'jon'}
+        // 可以修改对象对应的某一个属性
+        // this.user.name = 'momo'
+
+        this.customUser.name = 'momo'
+      }
+    }
+  });
+
+  Vue.component('users', {
+    props: ['user'],
+    template: `<div>{{user.name}}</div>`
+  })
+
+
+  var vm = new Vue({
+    //el: '#app',
+    data: {
+      m: 'hello',
+      user: {
+        name: 'leo'
+      }
+    }
+  })
+
+  vm.$mount('#app')
+</script>
+
+</body>
+</html>
