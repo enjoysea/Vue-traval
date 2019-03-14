@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+
+  </style>
+  <script src="./src/vue.js"></script>
+  <script type="text/x-template" id="news-template">
+    <div>
+      <h2>{{title}}<span>X</span></h2>
+      <list></list>
+    </div>
+  </script>
+</head>
+<body>
+<div id="app">
+  <div>
+    <span>改变这里的数据：{{btnValue1}}</span>
+    <custom-button
+      :data="btnValue1"
+      button-value="改变"
+      @click-btn="changeValue1"
+    ></custom-button>
+  </div>
+  <hr>
+  <div>
+    <p>改变这里的数据：{{btnValue2}}</p>
+    <custom-button
+      :data="btnValue2"
+      button-value="重置"
+      @click-btn="changeValue2"
+    ></custom-button>
+  </div>
+  <input type="text" name="" onclick="alert(1)">
+  <input type="checkbox" name="">
+  <custom-button @click-btn="clickBtn"></custom-button>
+</div>
+
+<script>
+  /*
+   自身数据
+    随便改
+   外部定制的数据
+    不能更改
+
+   组件内部的操作不能影响外部
+
+   父组件-> 子组件通信 props
+   子组件 -> 父组件 custom event
+   订阅发布模式
+
+   以下演示使用对象演示，说明内部改变了外面的数据影响了外面。
+
+   自定义组件的名字，不能是w3c规定的标签名
+   div span header。。。
+
+   定义组件标签名
+    驼峰命名法 aBc
+    烤串命名法 a-b-c
+
+   在模板中使用组件，标签名要使用烤串命名法
+
+   行间中的属性，使用烤串命名法，接收的时候使用驼峰命名法
+   */
+
+  // 父级关心子级内某个交互发生了，父级要做出对应的事情
+  // 子组件要通知父组件发生了某些事情
+  // 自定义事件 订阅发布模式
+
+  //Vue.component('custom-button')
+  Vue.component('CustomButton', {
+    props: {
+      buttonValue: {
+        type: String,
+        default: '按钮'
+      }
+    },
+    template: `
+      <div>
+        <button @click="clickBtn">{{buttonValue}}</button>
+      </div>
+    `,
+    methods: {
+      clickBtn(){
+        // this => 当前所在组件的实例
+        //alert('点击了')
+        //this.data = '123'
+        // 发布一个事件
+        console.log('点击了button');
+        this.$emit('click-btn', '子组件发布的参数')
+      }
+    }
+  })
+
+
+  var vm = new Vue({
+    //el: '#app',
+    data: {
+      btnValue1: 'hello,vue,我是第一个按钮要改变的数据',
+      btnValue2: 'hello,vue,我是第2个按钮要改变的数据'
+    },
+    methods: {
+      changeValue1(parmas){
+        console.log('触发了父组件的changeValue1', parmas);
+        this.btnValue1 = 123;
+      },
+      changeValue2(parmas){
+        console.log('changeValue2参数为：', parmas);
+        this.btnValue2 = 456;
+      },
+      clickBtn(){
+        alert(1)
+      }
+    }
+  })
+
+  vm.$mount('#app')
+</script>
+
+</body>
+</html>

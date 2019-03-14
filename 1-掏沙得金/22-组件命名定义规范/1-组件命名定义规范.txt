@@ -1,0 +1,27 @@
+定义组件标签名
+    驼峰命名法 aBc
+    烤串命名法 a-b-c
+
+例如：
+Vue.component('custom-button')
+Vue.component('CustomButton')
+
+页面引用
+<custom-button></custom-button>
+
+
+-------------------------------
+
+
+订阅发布模式命名规范：
+
+this.$emit('click-btn', '子组件发布的参数')
+
+父组件
+<custom-button     
+      @click-btn="changeValue1"
+></custom-button>
+
+
+
+
