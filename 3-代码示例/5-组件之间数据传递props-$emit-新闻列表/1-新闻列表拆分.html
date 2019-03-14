@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+
+  </style>
+  <script src="./src/vue.js"></script>
+  <script type="text/x-template" id="news-template">
+    <div>
+      <h2>{{title}}<span>X</span></h2>
+      <list></list>
+    </div>
+  </script>
+</head>
+
+<body>
+
+<div id="app">
+  <h1>渲染新闻组件</h1>
+  <p>点击了哪一项，下标是多少？</p>
+  <hr>
+  <news
+          :title="title" :btn-value="buttonValue" :list="list"
+          @news-click-btn="clickIndexHandle"
+  ></news>
+  <!-- <div>
+    <h2>标题</h2>
+    <ul>
+      <li>
+        <span>新闻标题</span>
+        <button>按钮</button>
+      </li>
+      <li>
+        <span>新闻标题</span>
+        <button>按钮</button>
+      </li>
+    </ul>
+  </div> -->
+</div>
+
+<script>
+
+  Vue.component('customeTitle', {
+    props: ['title'],
+    template: `
+					<h2>{{title}}</h2>
+				`
+  })
+  Vue.component('customeList', {
+    props: ['bValue', 'list'],
+    template: `
+					<ul>
+						<item 
+							v-for="option,index in list"
+							:index = "index"
+							:item-title="option" 
+							:b-value="bValue"
+							:key='index'
+							@item-click-btn="getClickIndex"
+						></item>
+					</ul>
+				`,
+    methods: {
+      getClickIndex(index){
+        console.log('list组件拿到了下标');
+        this.$emit('list-click-btn', index)
+      }
+    }
+  })
+  Vue.component('item', {
+    props: ['itemTitle', "bValue", "index"],
+    template: `
+					<li>
+						<span>{{itemTitle}}</span>
+						<button @click="clickBtn">{{bValue}}</button>
+					</li>
+				`,
+    methods: {
+      clickBtn(){
+        // 发布事件，通知父级
+        this.$emit('item-click-btn', this.index)
+      }
+    }
+  })
+
+  Vue.component('news', {
+    props: ['title', "btnValue", "list"],
+    template: `
+					<div>
+						<customeTitle :title="title"></customeTitle>
+						<customeList 
+							:b-value="btnValue" :list="list"
+							@list-click-btn="getListClickIndex"
+						></customeList>
+					</div>
+				`,
+    methods: {
+      getListClickIndex(index){
+        console.log('news组件拿到了下标');
+        this.$emit('news-click-btn', index)
+      }
+    }
+  })
+
+
+  var vm = new Vue({
+    //el: '#app',
+    data: {
+      title: '新闻',
+      buttonValue: '删除',
+      list: ['天气很好', '今天又学习了']
+    },
+    methods: {
+      clickIndexHandle(index){
+        console.log('根实例接收到了下标', index);
+      }
+    }
+  })
+
+  vm.$mount('#app')
+</script>
+
+</body>
+</html>

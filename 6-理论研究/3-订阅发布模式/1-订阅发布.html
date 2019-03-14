@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./jquery-3.2.1.js"></script>
+		<script>
+
+			// 解耦两个对象互相依赖
+
+			/*$(document).on('custome-abc',function (){
+				console.log('我被触发了');	
+			});
+
+			document.onclick  =function (){
+				$(document).trigger('custome-abc')	
+			}*/
+
+			var o = {
+				name: 'leo'
+			}
+
+			function changeO(){
+				console.log('改变了o');
+				o.name = 'momo'	
+				console.log(o);
+			}
+
+			// 注册
+			$(document).on('change-obj',changeO)
+
+
+
+			document.onclick  = function (ev){
+				console.log(ev);
+				// 发布
+				$(document).trigger('change-obj')
+				//o.name = 'momo';
+				//console.log(o);	
+			}
+
+		</script>
+	</head>
+
+	<body>
+		
+	</body>
+</html>
