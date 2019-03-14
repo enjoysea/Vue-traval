@@ -1,0 +1,5 @@
+bus.$on('custome-event',handle)
+bus.$emit('custome-event',参数)
+
+事件总线缺点：
+解决了跨组件通信问题，数据可以随便被修改
