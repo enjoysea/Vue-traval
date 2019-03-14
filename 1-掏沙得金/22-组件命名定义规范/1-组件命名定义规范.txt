@@ -13,6 +13,21 @@ Vue.component('CustomButton')
 -------------------------------
 
 
+props命名规范：
+
+props: {
+      buttonValue: {
+        type: String,
+        default: '按钮'
+      }
+},
+<custom-button button-value="改变">
+</custom-button>
+
+
+-------------------------------
+
+
 订阅发布模式命名规范：
 
 this.$emit('click-btn', '子组件发布的参数')
