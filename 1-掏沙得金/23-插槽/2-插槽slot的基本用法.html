@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+
+  </style>
+  <script src="./src/vue.js"></script>
+  <script type="text/x-template" id="news-template">
+    <div>
+      <h2>{{title}}<span>X</span></h2>
+      <list></list>
+    </div>
+  </script>
+</head>
+
+<body>
+
+<div id="app">
+  <news>
+    <!--写的结构是给子组件混合在子组件模板中使用-->
+    <!--子组件中没有插槽标签slot，内容会被忽略-->
+    <!--这里的title属于父组件-->
+    {{title}}
+  </news>
+  <news></news>
+</div>
+
+<script>
+  /*
+   定制数据
+   props
+
+   定制结构
+   slot插槽
+
+   模板作用范围
+   被作用的组件的实例上去找数据
+   */
+
+
+  Vue.component('news', {
+    data(){
+      return {
+        title: '子级的title'
+      }
+    },
+    template: `
+					<div>
+						<h2>新闻</h2>
+						<p>下标题</p>
+						<!--在组件一对标签中的内容，会被混合在这里-->
+      <slot>
+      <!--如果组件标签对中没有内容，slot中间的就是默认内容-->
+      <!--如果组件标签对中有内容，slot中间的内容会被替换-->
+      我是默认的内容
+      </slot>
+      <ul>
+      <li>新闻1</li>
+      <li>新闻1</li>
+      <li>新闻1</li>
+      </ul>
+      </div>`
+  })
+
+  var vm = new Vue({
+    //el: '#app',
+    data:{
+      title: '父级中的标题'
+    }
+  })
+
+  vm.$mount('#app');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+		<script type="text/x-template" id="news-template">
+			<div>
+				<h2>{{title}}<span>X</span></h2>
+				<list></list>
+			</div>
+		</script>
+	</head>
+
+	<body>
+
+		<div id="app">
+			<news>
+				<!--slot-scope接收的是对象 slot-scope="attr"-->
+				<a slot="title-slot" href="" slot-scope="{t,a}">
+					我是新标题,子组件中的标题：{{t}}---{{a}}
+				</a>
+				<p>{{title}}</p>
+				<p>{{title}}</p>
+				<p>{{title}}</p>
+				<p>{{title}}</p>
+				<p>{{title}}</p>
+					
+				<template slot="list">
+					<div>定制list</div>
+					<div>定制list</div>
+					<div>定制list</div>
+					<div>定制list</div>
+					<div>定制list</div>
+					<div>定制list</div>
+					<ol>
+						<li>定制list</li>
+					</ol>
+				</template>
+
+
+			</news>
+		</div>
+
+		<script>
+			/*
+				定制数据
+					props
+
+				定制结构
+					slot插槽
+
+				模板作用范围
+					被作用的组件的实例上去找数据
+
+
+				slot-scope
+					插槽范围
+
+					父组件中定制的内容要渲染子组件的数据
+			*/
+
+
+			Vue.component('news', {
+				data(){
+					return {
+						title: '子级的title'
+					}
+				},
+				template: `
+					<div>
+						<slot name="title-slot" :t="title" a="1">
+							<h2>新闻</h2>
+						</slot>
+						<p>下标题</p>
+						<slot>我是默认的内容</slot>
+						<slot name="list">
+							<ul>
+								<li>新闻1</li>
+								<li>新闻1</li>
+								<li>新闻1</li>
+							</ul>
+						</slot>
+
+						
+					</div>
+				`
+			})
+
+
+
+			var vm = new Vue({
+				//el: '#app',
+				data:{
+					title: '父级中的标题'
+				}
+			})
+
+			vm.$mount('#app');
+		</script>
+		
+	</body>
+</html>

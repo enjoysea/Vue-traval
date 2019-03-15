@@ -1,0 +1,61 @@
+
+一、这里的title属于父组件
+
+<news>   
+    {{title}}
+</news>
+
+-----------------------------------------------------------
+
+二、模板中的slot
+
+1、如果组件标签对中没有内容，slot中间的就是默认内容
+2、如果组件标签对中有内容，slot中间的内容会被替换
+
+<slot>我是默认的内容</slot>
+
+-----------------------------------------------------------
+
+三、一起替换插槽，简洁写法，并且不带父级
+
+<template slot="list">
+	<div>定制list</div>
+	<div>定制list</div>
+	<div>定制list</div>
+	<div>定制list</div>
+	<div>定制list</div>
+	<div>定制list</div>
+	<ol>
+		<li>定制list</li>
+	</ol>
+</template>
+
+-----------------------------------------------------------
+
+四、slot-scope 插槽范围
+
+1、父组件中定制的内容要渲染子组件的数据
+<news>
+	<a slot="title-slot" href="" slot-scope="{t,a}">
+		我是新标题,子组件中的标题：{{t}}---{{a}}
+	</a>
+</news>
+
+
+template: `
+<div>
+	<slot name="title-slot" :t="title" a="1">
+		<h2>新闻</h2>
+	</slot>							
+</div>`
+
+
+ps:
+	其中：一、参考：2-插槽slot的基本用法.html
+	      二、参考：3-具名插槽.html
+
+
+
+
+
+
