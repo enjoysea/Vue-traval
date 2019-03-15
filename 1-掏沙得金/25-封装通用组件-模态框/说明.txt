@@ -1,0 +1,15 @@
+
+一、两种双向数据绑定方式：
+
+1-modal模态框-vue
+	双向数据绑定：:show.sync="show"
+
+2-modal模态框-vue.html
+	v-model="show"
+
+	value:{
+		type: Boolean,
+		default: false
+	},
+	this.$emit('input',false)
+	

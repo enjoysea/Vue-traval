@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="./style.css">
+		<script src="./src/vue.js"></script>
+		<script type="text/x-template" id="modal-temp">
+			<div v-show="show" class="modal-example">
+				<div class="mask"></div>
+	        	<div class="modal">
+					<div class="modal-header">
+						<slot name="modal-top" :title="title+'9999999'">
+							<h4>{{title}}</h4>
+						</slot>
+					</div>
+					<div class="modal-content">
+						<div>
+							<slot name="content">这是默认展示的内容</slot>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<slot name="footer">
+							<input class="btn" type="button" @click="okHandle" :value="okValue"  />
+							<input class="btn" type="button" @click="cancelHandle" :value="cancelValue" />
+						</slot>
+					</div>
+	        	</div>
+	      	</div>
+		</script>
+	</head>
+
+	<body>
+		<div id="app">
+			<button @click="show=true">测试modal框</button>
+			<modal 
+				@click-ok="okparantHandle" 
+				ok-value="ok" title="警告"
+				:show.sync="show"
+			>
+				<div slot="modal-top" slot-scope="{title}">
+					<h4><i>图标</i>{{title}}</h4>
+				</div>
+				<div slot="content">
+					<form>
+						<input type="" name="">
+						<input type="" name="">
+						<input type="" name="">
+						<input type="" name="">
+						<input type="" name="">
+					</form>
+				</div>
+
+			</modal>
+		</div>
+
+		<script>
+			/*
+				通用modal框
+					1. 定制数据
+						title 定制标题 String
+						ok-value 定制确定按钮名字 String
+						cancel-value 定制取消按钮名字 String
+					2. 定制内容
+						content 定制中间展示的结构
+						footer 定制底部结构
+					3. 暴露内部状态 自定义事件
+						click-ok 点击确定触发
+						click-cancel 点击取消触发
+			*/
+
+			Vue.component('modal',{
+				props:{
+					title: {
+						type: String,
+						default: '这是默认标题'
+					},
+					okValue: {
+						type: String,
+						required: true
+					},
+					cancelValue:{
+						type: String,
+						default: '取消'
+					},
+					show:{
+						type: Boolean,
+						default: false
+					}
+				},
+				template: '#modal-temp',
+				methods:{
+					cancelHandle(){
+						this.$emit('click-cancel');
+						//this.show = false;
+						this.$emit('update:show',false)
+					},
+					okHandle(){
+						this.$emit('click-ok')
+						//this.show = false;
+						this.$emit('update:show',false)
+					}
+				}
+			})
+
+			new Vue({
+				el: '#app',
+				data:{
+					show: false
+				},
+				methods:{
+					okparantHandle(){
+						//alert(123)
+					}
+				}
+
+			})
+
+		</script>
+	</body>
+</html>
