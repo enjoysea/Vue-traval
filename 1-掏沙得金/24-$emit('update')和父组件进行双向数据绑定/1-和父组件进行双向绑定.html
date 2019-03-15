@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <style>
+
+  </style>
+  <script src="./src/vue.js"></script>
+  <script type="text/x-template" id="news-template">
+    <div>
+      <h2>{{title}}<span>X</span></h2>
+      <list></list>
+    </div>
+  </script>
+</head>
+
+<body>
+
+<div id="app">
+  <h1>这是父级的title:{{title}}</h1>
+  <hr>
+  <news :title.sync="title" :title2.sync="title"></news>
+  <!--
+    .sync 就是一下的语法糖
+  -->
+  <!-- <news :title="title" @update="(newValue)=>{title=newValue}"></news> -->
+</div>
+
+<script>
+
+  /*
+   组件某些数据可以双向绑定
+
+   */
+
+  Vue.component('news', {
+    props: ['title'],
+    template: `
+					<div>
+						<button @click="changeTitlte">测试书双向绑定</button>		
+						<p>{{title}}</p>				
+					</div>
+				`,
+    methods: {
+      changeTitlte(){
+        //this.title = 123;
+        this.$emit('update:title', 123)
+        //this.$emit('update',123)
+      }
+    }
+  })
+
+  var vm = new Vue({
+    data: {
+      title: '父级中的标题'
+    }
+  })
+
+  vm.$mount('#app');
+</script>
+
+</body>
+</html>
