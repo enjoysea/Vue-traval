@@ -1,0 +1,15 @@
+一、方式一
+<div id="app">
+	<p>使用vuex中的数据：{{$store.state.n}}</p>
+</div>
+
+
+二、方式二
+export default {
+ props: ['title'],
+ data () {
+  return {
+	m: this.$store.state.n
+  }
+ }
+}

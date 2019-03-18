@@ -1,0 +1,16 @@
+Step1:引入组件
+	import Test from '@/components/test'
+
+
+Step2:注册组件
+	export default {
+		name: 'App',
+		components: {
+			// abc: Test
+			Test
+		}
+	}
+
+Step3:使用组件
+	<test></test>
+

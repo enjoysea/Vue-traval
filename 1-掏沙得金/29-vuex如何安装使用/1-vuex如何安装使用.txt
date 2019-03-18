@@ -13,7 +13,7 @@
 		Vue.use(Vuex)
 
 	实例化vuex
-		var store = Vuex.Store({
+		var store = new Vuex.Store({
 			state: {}  // 应用的状态
 			mutations:{} 改变状态
 			actions:{} 异步操作

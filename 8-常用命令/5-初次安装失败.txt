@@ -1,4 +1,4 @@
-一、初次安装失败，主要是以下两个文件
+一、初次安装（vue init webpack <project-name>）失败，主要是以下两个文件
 	webpack-dev-server
 	webpack
 
