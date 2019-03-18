@@ -1,31 +1,31 @@
-
-Ò»¡¢Ê¹ÓÃvuex
-	×´Ì¬¾ÍÊÇÊı¾İ
+ï»¿
+ä¸€ã€ä½¿ç”¨vuex
+	çŠ¶æ€å°±æ˜¯æ•°æ®
 
 	https://vuex.vuejs.org/zh/
 
-	°²×° vuex npm i vuex -save
+	å®‰è£… vuex npm i vuex -save
 
-	mian.jsÒıÈëvuex
+	mian.jså¼•å…¥vuex
 		import Vuex from 'vuex'
 
-	°Ñvuex×÷ÎªvueµÄ²å¼ş
+	æŠŠvuexä½œä¸ºvueçš„æ’ä»¶
 		Vue.use(Vuex)
 
-	ÊµÀı»¯vuex
+	å®ä¾‹åŒ–vuex
 		var store = Vuex.Store({
-			state: {}  // Ó¦ÓÃµÄ×´Ì¬
-			mutations:{} ¸Ä±ä×´Ì¬
-			actions:{} Òì²½²Ù×÷
-			getters: {} ³éÀë´¦ÀístateµÄÂß¼­
+			state: {}  // åº”ç”¨çš„çŠ¶æ€
+			mutations:{} æ”¹å˜çŠ¶æ€
+			actions:{} å¼‚æ­¥æ“ä½œ
+			getters: {} æŠ½ç¦»å¤„ç†stateçš„é€»è¾‘
 		})
 
-	×¢Èëµ½¸ùÊµÀıÖĞ
+	æ³¨å…¥åˆ°æ ¹å®ä¾‹ä¸­
 		new Vue({
 			...
 			store:store
 		})
 
-	ÔÚÃ¿¸ö×é¼şµÄÊµÀıÉÏ¶¼¿ÉÒÔÄÃµ½ $store ¾ÍÊÇÊµÀıÉÏµÄÊôĞÔ
+	åœ¨æ¯ä¸ªç»„ä»¶çš„å®ä¾‹ä¸Šéƒ½å¯ä»¥æ‹¿åˆ° $store å°±æ˜¯å®ä¾‹ä¸Šçš„å±æ€§
 
 
