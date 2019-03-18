@@ -1,0 +1,12 @@
+一、CommonJS规范
+
+	一个模块导入：	
+		var http = require('模块路径/模块名字')
+
+
+	一个模块导出：
+		module.exports挂载要导出的方法
+
+
+
+	

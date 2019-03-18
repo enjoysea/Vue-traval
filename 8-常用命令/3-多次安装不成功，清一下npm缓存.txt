@@ -1,0 +1,2 @@
+1、多次安装不成功，清一下npm缓存
+	npm cache clean -f

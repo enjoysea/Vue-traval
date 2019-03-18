@@ -1,0 +1,8 @@
+一、初次安装失败，主要是以下两个文件
+	webpack-dev-server
+	webpack
+
+
+二、需要重新安装
+	npm i webpack-dev-server@2 -g
+	npm i webpack@3 -g

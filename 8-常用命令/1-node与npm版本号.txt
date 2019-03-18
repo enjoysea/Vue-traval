@@ -1,0 +1,5 @@
+1、node版本号
+	node -v 
+
+2、npm包（模块）管理器
+	npm -v

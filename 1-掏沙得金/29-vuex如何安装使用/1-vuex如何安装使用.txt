@@ -1,0 +1,31 @@
+
+一、使用vuex
+	状态就是数据
+
+	https://vuex.vuejs.org/zh/
+
+	安装 vuex npm i vuex -save
+
+	mian.js引入vuex
+		import Vuex from 'vuex'
+
+	把vuex作为vue的插件
+		Vue.use(Vuex)
+
+	实例化vuex
+		var store = Vuex.Store({
+			state: {}  // 应用的状态
+			mutations:{} 改变状态
+			actions:{} 异步操作
+			getters: {} 抽离处理state的逻辑
+		})
+
+	注入到根实例中
+		new Vue({
+			...
+			store:store
+		})
+
+	在每个组件的实例上都可以拿到 $store 就是实例上的属性
+
+
