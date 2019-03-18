@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<h2>测试v-for</h2>
+			<button @click="randomSort">随机排序</button>
+			<ul>
+        <!--:key="index"，不行，这里使用item-->
+				<li 
+					v-for="item,index in list"
+					:key="item"
+				>
+				<span @click="(e)=>{e.target.parentNode.style.background='red'}">{{item}}</span>
+				<button @click="remove(index)">删除</button>
+				</li>
+			</ul>
+		</div>
+		<script>
+			// 数据发生变化的时候，不会把li移出重新生成，而是复用已有的结构
+			// key值最好使用数据的id
+			new Vue({
+				el: '#app',
+				data:{
+					list: ['a','b','c','d','e','f']
+				},
+				methods:{
+					remove(index){
+						this.list.splice(index,1)
+					},
+					randomSort(){
+						this.list.sort(() => Math.random() - 0.5);
+					}
+				}
+			})
+
+		</script>
+	</body>
+</html>
