@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./src/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<h2>测试生命周期钩子函数</h2>
+			<button @click="list=123">更新数据</button>
+			<p>{{list}}</p>
+		</div>
+		<script>
+			// 生命周期 一个实例从创建 挂载 更新 销毁 经历过这些阶段
+			// 每个阶段会触发一些钩子函数，生命周期钩子函数
+			// 钩子函数的名字是内部规定好的，内部主动调用的，写在选项对象上
+			var vm = new Vue({
+				//el: '#app',
+				//template: `<div>{{list}}</div>`,
+				data:{
+					list: 'hello',
+					users:[]
+				},
+				beforeCreate(){
+					console.group('创建之前：beforeCreate start');
+					console.log(this.list);  // 还没有被代理挂载实例上
+					console.log(this);
+					console.groupEnd('创建之前：beforeCreate end');
+
+				},
+				created(){
+					console.group('创建之后：created start');
+					console.log(this.list);
+					console.log('发送ajax请求');
+					console.groupEnd('创建之前：created end');
+				},
+				beforeMount(){
+					console.group('挂载前：beforeMount start');
+					console.log( document.getElementById('app').outerHTML );
+					console.log(this);
+					console.groupEnd('挂载前：beforeMount end');
+				},
+				mounted(){
+					console.group('挂载之后：mounted start');
+					console.log( document.getElementById('app').outerHTML );
+					console.log( '可以操作页面中的元素了' );
+					console.groupEnd('挂载之后：mounted end');
+				},
+				beforeUpdate(){ // react 有阻止更新
+					console.group('更新前：beforeUpdate start');
+					console.log( '更新前',this.list );
+					console.log( '更新前',document.getElementById('app').outerHTML );
+					console.groupEnd('更新前：mounted end');
+				},
+				updated(){
+					console.group('更新后：beforeUpdate start');
+					console.log( '更新后',this.list );
+					console.log( '更新后',document.getElementById('app').outerHTML );
+					console.groupEnd('更新后：mounted end');
+				},
+				beforeDestroy(){
+					console.group('销毁前：beforeDestroy');
+					console.log('销毁前');
+					console.groupEnd('销毁前：beforeDestroy');
+				},
+				destroyed(){
+					console.group('销毁后：destroyed');
+					console.log( '销毁后' );
+					console.groupEnd('销毁后：destroyed');
+				}
+			})
+
+			vm.$mount('#app')
+
+			setTimeout(function (){
+				vm.$destroy();	
+			},3000)
+
+			//vm.$destroy();  // 内部的所有监听的事件全部被销毁了
+
+		</script>
+	</body>
+</html>
