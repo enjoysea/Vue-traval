@@ -1,0 +1,9 @@
+
+1、main.js中
+Vue.component('quanju',{
+  template: `<div>我不需要注册，谁都可以用</div>`
+})
+
+
+2、任何组件都可以使用
+<quanju></quanju>
