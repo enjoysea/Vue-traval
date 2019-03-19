@@ -1,0 +1,22 @@
+一、require与import的区别
+1、require是node的CommonJS规范
+2、import依赖webpack，是ES6模块
+
+
+二、ES6模块
+	一个文件就是一个模块
+	引入模块
+		import 变量 from '路径'
+		相当路径：开发者自己创建的文件
+		模块名字 引入的是node_modules下的模块
+		
+
+	暴露模块方法
+		export 
+		export default
+
+
+三、在ES6之前，社区制定了一些模块加载方案，最主要的是CommonJS和AMD两种。
+前者用于服务器，后者用于浏览器。
+ES6在语言标准的层面上，实现了模块功能，而且实现的相当简单，完全可以取代
+CommonJS和AMD规范，称为浏览器和服务器通用的模块解决方案。

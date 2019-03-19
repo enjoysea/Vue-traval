@@ -2,4 +2,6 @@
 1¡¢node¹ÙÍø
 	https://nodejs.org/en/
 
-2¡¢
+2¡¢ES6
+	http://es6.ruanyifeng.com
+	Module µÄÓï·¨
