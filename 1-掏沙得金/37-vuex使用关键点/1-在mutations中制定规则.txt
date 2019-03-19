@@ -1,0 +1,10 @@
+
+一、在mutations中制定规则，传入的参数必须是数字，并且必须大于100
+
+mutations:{
+    changeN(state,obj){  // 这是一个mutation，用来改变状态中的n
+      if (isNaN(obj.val)) return;
+      if (obj.val>100) return;
+      state.n = obj.val;
+    }
+}
