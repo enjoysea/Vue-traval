@@ -1,0 +1,19 @@
+index.js
+export function add() {
+  console.log('相加')
+}
+
+export function miaov() {
+  console.log('miaov')
+}
+
+-----------------
+
+main.js
+
+// 结构赋值
+import {add,miaov} from './utils/index'
+
+console.log(add) //? add() {
+  console.log('相加');
+}

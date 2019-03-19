@@ -1,0 +1,16 @@
+index.js
+
+function add() {
+  console.log('ПајУ')
+}
+
+function miaov() {
+  console.log('miaov')
+}
+
+---------------------
+
+main.js
+
+import abc from './utils/index'
+console.log(abc) //{}

@@ -1,0 +1,21 @@
+﻿index.js
+function add() {
+  console.log('相加')
+}
+
+function miaov() {
+  console.log('miaov')
+}
+
+// 默认导出
+export default {
+  add,
+  miaov
+}
+
+----------------
+
+main.js
+
+import abc from './utils/index'
+console.log(abc) //{add: ƒ, miaov: ƒ}

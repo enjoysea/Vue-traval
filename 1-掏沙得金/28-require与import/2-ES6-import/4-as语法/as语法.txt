@@ -1,0 +1,19 @@
+index.js
+export function add() {
+  console.log('相加')
+}
+
+export function miaov() {
+  console.log('miaov')
+}
+
+-----------------
+
+main.js
+
+// 将所有export导出的东西都放在foo这个对象上
+import * as foo from './utils/index'
+
+console.log(foo.add) //? add() {
+  console.log('相加');
+}
