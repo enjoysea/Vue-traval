@@ -1,0 +1,4 @@
+一、样式只能在当前组件用，别人是用不了的
+
+<style scoped> sass less
+</style>

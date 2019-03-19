@@ -1,0 +1,11 @@
+一、在main.js中引入css
+
+import './assets/css/base.css'
+import './assets/css/index.css'
+
+
+替换成入口css：import './assets/css/app.css'
+
+在app.css中引入以上两个文件
+@import './base.css'
+@import './index.css'
