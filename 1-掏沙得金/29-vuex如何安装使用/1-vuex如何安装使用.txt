@@ -4,15 +4,15 @@
 
 	https://vuex.vuejs.org/zh/
 
-	安装 vuex npm i vuex -save
+	1、安装 vuex npm i vuex -save
 
-	mian.js引入vuex
+	2、mian.js引入vuex
 		import Vuex from 'vuex'
 
-	把vuex作为vue的插件
+	3、把vuex作为vue的插件
 		Vue.use(Vuex)
 
-	实例化vuex
+	4、实例化vuex
 		var store = new Vuex.Store({
 			state: {}  // 应用的状态
 			mutations:{} 改变状态
@@ -20,12 +20,17 @@
 			getters: {} 抽离处理state的逻辑
 		})
 
-	注入到根实例中
+	5、注入到根实例中
 		new Vue({
 			...
 			store:store
 		})
 
-	在每个组件的实例上都可以拿到 $store 就是实例上的属性
+	6、组件中访问
+		this.$store访问
+		this.$store.state.XXX
+
+
+	在每个组件的实例上都可以拿到 $store，就是实例上的属性
 
 
