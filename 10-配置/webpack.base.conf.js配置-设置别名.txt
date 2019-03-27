@@ -1,0 +1,13 @@
+
+一、设置别名
+resolve: {
+  extensions:['.js', '.vue', '.json'] // 以这些结尾的扩展名都不需要写
+  alias: { // 别名
+    'vue$': 'vue/dist/vue.esm.js'
+    '@': resolve('src')
+  }
+}
+
+加$，代表引入的文件，是：'vue/dist/vue.esm.js'
+
+而不是直接引入的模块
