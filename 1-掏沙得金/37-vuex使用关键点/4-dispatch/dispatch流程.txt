@@ -1,0 +1,31 @@
+
+一、dispatch流程
+
+Step1：
+methods: {
+  this.$store.dispatch('changeNAction',{
+    val:++this.kk
+  })
+}
+
+
+store/index.js
+Step2：
+actions:{
+    // store 当前vuex的实例   
+    changeNAction(store,obj){
+      setTimeout(() => {
+        store.commit('changeN', obj)
+      }, 1000);
+    }
+}
+
+
+Step3：
+mutations:{
+  changeN(state,obj){     
+    state.n = obj.val;
+  }
+}
+
+

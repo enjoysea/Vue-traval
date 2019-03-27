@@ -1,0 +1,13 @@
+
+一、给state对象添加属性的两种方法
+
+	state: {  
+    	  n: 100,
+    	  miaov:{
+      	    ketang: '我是妙味课堂',
+      	    //abc:10 state 上开始是没有这个属性的
+    	  }
+	},
+
+	方法一：state.miaov = { ...state.miaov, abc: 10 }
+	方法二：Vue.set(state.miaov, 'abc', 10)
