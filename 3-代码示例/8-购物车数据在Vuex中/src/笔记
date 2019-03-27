@@ -1,0 +1,135 @@
+1. 获取数据
+	
+	mock数据
+
+	推荐商品：https://easy-mock.com/mock/5abdef3d1fc7eb0367395cc9/shop/recommend
+
+	商品列表
+		https://easy-mock.com/mock/5abdef3d1fc7eb0367395cc9/shop/shop-list
+2. ajax库
+	jquery
+	axios
+		Promise
+		node/brower
+
+		文档：https://www.kancloud.cn/yunye/axios/234845
+
+	安装axios
+		npm i axios -S
+
+	引入
+		import axios from 'axios'
+
+	使用
+		axios(url,option)
+		axios({
+			url:....
+			data:{
+
+			}
+		}).then((data) => {
+			console.log(data);
+		}).catch((e)=>{
+			console.log(e);
+		})
+
+
+
+vue init webpack project 
+	eslint no
+	vue-router no
+	no
+	no
+	no
+
+项目文件夹
+	src
+		main.js  js的入口 启动整个应用代码
+		App.vue  根组件入口
+		components
+			公共组件
+		assets
+			静态资源
+			img css js 归webpack管理的
+
+ES6 模块
+	一个文件就是模块
+
+	引入模块
+		import 变量 from '路径'
+			相对路径 开发者自己创建的文件
+			模块名字 引入的是node_modules下的模块
+
+	暴露模块方法
+		export 
+		export default
+
+单文件组件
+	一个文件是一个组件 .vue结尾
+
+		template
+			模板 顶层标签
+		script
+			写组件的配置
+			export default {  组件配置
+				data(){
+
+				},
+				methods
+				components
+				computed
+			}
+		style
+			写模板的样式
+
+
+	Vue.component('标签名', {
+		template: ``
+		data
+		methods
+		components
+		computed
+		....
+	})
+
+
+Vuex学习
+
+它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化
+
+1. 集中式管理数据
+2. 相应的规则 可预测的
+
+
+安装vuex
+	npm i vuex -S
+
+引入
+	import Vuex from 'vuex'
+
+作为vue的插件
+	Vue.use(Vuex)
+
+创建容器
+	var store = new Vuex.Store({
+		state:{n:1} // 数据 状态
+	})
+传入到根实例中
+	new Vue({
+		...
+		store:store
+	})
+
+组件中访问
+	this.$store访问
+	this.$store.state.XXXXXX
+
+两个点
+	改变数据，要按照一定的规则改，改变数据的时候要记录日志
+
+改变vuex中的state，必须提交mutation
+
+mutation 是改变state的唯一途径 改变时候必须是同步的
+
+遇到异步
+	action中
