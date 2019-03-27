@@ -1,0 +1,21 @@
+一、安装Axios
+
+1、安装axios
+	npm i axios -S
+
+2、引入
+	import axios from 'axios'
+
+3、使用
+	axios({ // axios返回的是promise对象
+	  url: ...,
+	  data: {
+
+          }
+	}).then((data)=>{
+	  console.log(data);	
+	}).catch((e)=>{
+	  console.log(e);
+	})
+
+	也可以axios(url, option)

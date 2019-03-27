@@ -5,3 +5,9 @@
 2、ES6
 	http://es6.ruanyifeng.com
 	Module 的语法
+
+3、easy-mock
+	http://easy-mock.com/
+
+4、Axios中文说明
+	https://www.kancloud.cn/yunye/axios/234845
