@@ -1,0 +1,14 @@
+1、store/index.js
+
+getters:{  // 对state做逻辑处理 类似组件中的computed
+    filterList(state){
+      return state.list.filter(item => item.data > 3)
+},
+
+
+2、count1.vue
+computed:{
+    a(){
+      return this.$store.getters.filterList
+    }
+}
