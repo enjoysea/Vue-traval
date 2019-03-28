@@ -1,0 +1,33 @@
+var user = 'leo';
+
+
+一、命名空间的概念
+/*{
+  user: 'leo',
+  info: {
+    user: 'momo'
+  }
+}*/
+
+
+--------------------
+
+
+二、真正去使用：
+
+var studentInfo = {};
+
+// 会重名
+/* studentInfo.user = 'leo';
+studentInfo.user = 'leo'; */
+
+// 不会重名
+/*studentInfo['leo'] = {
+  user: 'leo'
+}
+studentInfo['momo'] = {
+  user: 'momo'
+}
+
+studentInfo.leo.teame.user
+studentInfo.momo.teame.user*/
