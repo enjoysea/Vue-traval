@@ -1,5 +1,5 @@
-actions:{
-    // vuexÖĞÊ¹ÓÃ asyncÓëawait£¬¾Í²»ÓÃÔÙĞ´.then
+ï»¿actions:{
+    // vuexä¸­ä½¿ç”¨ asyncä¸awaitï¼Œå°±ä¸ç”¨å†å†™.then
     /*async getHome () {
       let data = awit getHomeData()
       commit('ddd', data)

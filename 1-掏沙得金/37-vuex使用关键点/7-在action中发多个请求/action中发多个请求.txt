@@ -1,0 +1,19 @@
+﻿action:{
+  changeNAction({commit, dispatch}){
+    setTimeout(()=>{
+      var result = 3000
+      dispatch('getUserNameAction',{
+       result
+      })
+    }, 2000)
+  }
+
+  getUserNameAction({commit, dispatch}, payload){
+    setTimeout(()=>{
+      var r = 5000
+      commit('updateN',{
+        num: r + payload.result
+      })
+    }, 2000)
+  }
+}
