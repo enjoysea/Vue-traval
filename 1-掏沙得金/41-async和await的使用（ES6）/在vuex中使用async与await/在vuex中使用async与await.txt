@@ -1,0 +1,7 @@
+actions:{
+    // vuex中使用 async与await，就不用再写.then
+    /*async getHome () {
+      let data = awit getHomeData()
+      commit('ddd', data)
+    }*/
+}
