@@ -1,0 +1,15 @@
+{
+    path: '/message',
+    name: 'Message',
+    title: 'ÏûÏ¢',
+    redirect: {name: 'Pinglun'},
+    component: Message,
+    children:[
+      {
+	path: 'pinglun',
+	name: 'Pinglun',
+	title: 'ÆÀÂÛ',
+	component: Pinglun
+      }
+    ]
+ }

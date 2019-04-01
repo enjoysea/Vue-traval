@@ -1,0 +1,14 @@
+方法一：
+{
+    path: '/message',    
+    title: '消息',
+    component: Message,
+    children: [
+      {
+	path: '',
+        name: 'Pinglun',
+	title: '评论',
+	component: Pinglun
+      }
+    ]
+}
