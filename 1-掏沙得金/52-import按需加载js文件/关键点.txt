@@ -1,0 +1,46 @@
+﻿一、懒加载的常规写法
+let About = () => {
+  return import('@/components/about')
+}
+let Users = () => {
+  return import('@/components/user')
+}
+
+-------------------------------------------------------------
+
+二、懒加载的简略写法 ✔
+let About = () => import('@/components/about')
+let Users = () => import('@/components/Users')
+
+
+-------------------------------------------------------------
+
+三、不拆分，避免拆分太细碎
+let ClassCom = () => {
+  // "class" 名字可以随便起的
+  return import(/* webpackChunkName: "class" */ '@/components/class')
+}
+
+let Css = () => {
+  return import(/* webpackChunkName: "class" */ '@/components/class-com/css')
+}
+let Js = () => {
+  return import(/* webpackChunkName: "class" */ '@/components/class-com/js')
+}
+let VueCom = () => {
+  return import(/* webpackChunkName: "class" */ '@/components/class-com/vue')
+}
+
+
+-------------------------------------------------------------
+
+四、不拆分，避免拆分太细碎 ✔
+let ClassCom = () => import(/* webpackChunkName: "class" */ '@/components/class')
+
+let Css = () => import(/* webpackChunkName: "class" */ '@/components/class-com/css')
+
+let Js = () => import(/* webpackChunkName: "class" */ '@/components/class-com/js')
+
+let VueCom = () => import(/* webpackChunkName: "class" */ '@/components/class-com/vue')
+
+

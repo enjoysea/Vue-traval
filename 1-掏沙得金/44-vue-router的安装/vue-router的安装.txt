@@ -1,0 +1,22 @@
+过程：
+	1、安装 npm i vue-router -S
+
+	2、引入 	import VueRouter from 'vue-router'
+	3、作为插件 Vue.use(VueRouter)
+	4、创建实例
+		var router = new VueRouter({
+			//配置规则
+			routes:[
+				{
+					path:
+					component:
+				}
+			]
+		})
+	5、注入根实例
+		new Vue({
+			...
+			router
+		})
+
+低版本中使用hash模式，高版本可以选择会用history模式

@@ -1,0 +1,5 @@
+在vue-router暴露两个全局的组件
+router-view 
+	当访问时候，把匹配到的路径对应的组件，替换在router-view 的位置
+router-link
+	当点击导航时候，在不刷新页面的情况下，切换路径

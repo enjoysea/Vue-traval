@@ -1,0 +1,12 @@
+watch:{
+      // ¼à¿Ø
+      $route(){
+        console.log('±ä»¯ÁË')
+        let id = this.$route.params.abc;
+        if(id){
+            var item = data.find((item) => item.id == id)
+            console.log(item)
+            this.info = item;
+        }
+      }
+},
