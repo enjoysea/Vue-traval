@@ -1,0 +1,19 @@
+监控路由变化的两种方式：
+
+一、watch监控
+
+ watch: {      
+      $route(){
+        this.getInfo()
+      }
+ }
+
+
+二、beforeRouteUpdate监控
+
+    beforeRouteUpdate(to,from,next){
+      console.log('更新了当前的$route，组件是复用的')
+      console.log(to) //进入的目标，没有调用next之前还是当前的路径
+      this.getInfo(to.params.id)
+      next()
+    }
