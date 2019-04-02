@@ -1,0 +1,35 @@
+﻿导航守卫
+	钩子函数
+
+三个位置
+	
+	路由全局的位置
+		只要访问任何一个路径，都会执行这里钩子函数
+
+		router.beforeEach() 进入之前触发 作用：判断登录
+		作用：loading
+
+		router.afterEach() 进入之后触发
+		作用：loading取消
+
+
+	路由配置中
+		访问特定的路径，才会执行钩子函数，用的比较少
+		{
+			path: '/a'
+			component:
+			beforeEnter() 进入之前触发
+
+		}
+
+
+	组件内
+		访问特定的路径，要渲染对应的组件，组件内的钩子才会触发
+		export default {
+			...
+			beforeRouteEnter(){} 进入之前触发
+			beforeRouteUpdate(){} 更新$route触发
+			beforeRouteLeave(){} 离开组件之前触发
+
+		}
+
