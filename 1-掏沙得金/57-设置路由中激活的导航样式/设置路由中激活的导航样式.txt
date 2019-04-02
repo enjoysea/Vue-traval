@@ -1,0 +1,33 @@
+
+一、给激活状态的导航添加class 精确
+	router-link-exact-active 当前所在路径对应的导航是激活的
+
+	访问的是/home/miaov
+		router-link的to为/home导航是激活状态 
+		router-link的to为/home/miaov导航是激活状态 
+
+			精确匹配，两个都有
+			router-link-exact-active
+			router-link-active
+
+二、激活的导航都会添加
+	router-link-active
+		访问的是/home router-link的to为/home，导航就是激活状态
+
+	访问的是/home/miaov
+		router-link的to为/home导航是激活状态 
+		router-link的to为/home/miaov导航是激活状态 
+
+
+三、
+
+:exact="true" 默认就是精确匹配
+:exact="false" 不是精确匹配
+
+
+四、event="mouseover"
+
+
+
+
+	
