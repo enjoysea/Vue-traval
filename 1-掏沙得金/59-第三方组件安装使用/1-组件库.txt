@@ -1,0 +1,38 @@
+﻿一、组件库
+	pc端
+		http://element.eleme.io/#/zh-CN/component/installation
+		https://www.iviewui.com/components/select
+
+		iview 界面比较好看
+		element 功能比较强大一些，一帮人在维护，界面没有iview看着舒服
+
+
+		
+	移动端
+		http://elemefe.github.io/mint-ui/#/
+		https://doc.vux.li/zh-CN/
+
+		Mint UI 是element出的
+		VUX是个人的，有些组件不维护了，功能要比Mint UI强大
+
+
+
+二、这里选用Mint UI
+
+1、安装：npm i mint-ui -S
+
+2、main.js
+	import MintUI from 'mint-ui'
+
+3、引入样式	
+	import 'mint-ui/lib/style.css'
+
+4、将mint-ui作为vue的插件
+	Vue.use(MintUI)
+
+5、作为方法来使用的，需要手动引入
+	import{ MessageBox} from 'mint-ui'
+
+
+
+
