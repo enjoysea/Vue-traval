@@ -27,8 +27,10 @@ export default {
       navData
     }
   },
-  created(){
-    axios('http://localhost:4000/hello')
+  async created(){
+    // axios('http://localhost:8080')
+    let data = await axios('/miaov/rank/list?json=true')
+    console.log(data)
   },
   name: 'App'
 }
