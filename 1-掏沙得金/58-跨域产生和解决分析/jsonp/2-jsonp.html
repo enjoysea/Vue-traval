@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script>
+			
+		</script>
+	</head>
+
+	<body>
+		<!-- <script src="1.js"></script> -->
+		<script>
+
+			function fn(arr){
+				console.log(arr);
+			}
+			document.onclick = function (){
+				var script = document.createElement('script');
+				script.src = `http://list.video.qq.com/fcgi-bin/list_common_cgi?otype=json&novalue=1&platform=1&version=10000&intfname=world_cup_vid&tid=674&appkey=86ff0af73276ade8&appid=20001257&c_category=11750&type=4&sourcetype=2&sort=3&pagesize=30&offset=0&672=197335&callback=fn&_=1530946037815`;
+				document.body.appendChild(script);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+﻿
+需求：
+
+一、数据
+	数据格式
+		json的格式
+		{
+			data: 
+		}
+	数据地址
+
+		http://m.kugou.com:80/singer/info/192923?json=true
+
+		User-Agent: Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Mobile Safari/537.36
+
+	本地开发
+		我们的域名 localhost:8080
+
+二、跨域
+	同源策略
+		所谓同源是指，域名，协议，端口相同。
+
+	只要域名，协议，端口有一个不相同，就产生跨域
+
+
+	
+	1、jsonp
+		link a img script可以跨域的
+
+		页面中生成一个script标签，script的src是一个远程的地址，当访问后，返回的数据会被js解析引擎就解析的。
+
+		数据是一个函数执行
+
+			fn({a:1})
+
+		需要在当前的页面全局定义fn函数
+
+	2、proxy(代理)
+		请求自己的服务
+		请求地址是自己的服务：http://localhost:8080/miaov/rank/list?json=true
+		代理到酷狗的接口
+			http://m.kugou.com/rank/list?json=true
+	3、cors
+		CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）。
+
+		它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。
+
+		http://www.ruanyifeng.com/blog/2016/04/cors.html
+
+		express设置请求头
+		https://www.cnblogs.com/zhangdongming/p/5850073.html
+
+组件库
+	pc端
+		http://element.eleme.io/#/zh-CN/component/installation
+		https://www.iviewui.com/components/select
+	移动端
+		http://elemefe.github.io/mint-ui/#/
+		https://doc.vux.li/zh-CN/
+
+
+1. 点击歌曲的hash值
+2. 当前播放的列表
