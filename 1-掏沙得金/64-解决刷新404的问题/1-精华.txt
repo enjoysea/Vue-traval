@@ -1,0 +1,83 @@
+﻿一、将dist文件夹中的
+	static 与 index.html 放在www目录中
+	刷新，页面不存在
+
+
+二、服务器路径和浏览器的路由路径冲突了
+
+访问网站的时候，网站路径交给服务器处理的，服务器找根目录下对应的资源
+http://localhost:3000/rank 找这个服务器根目录下rank这个目录下的资源 
+
+单页应用，只有一个页面。不管访问哪个路径，都访问到index.html
+
+js vue-router
+
+
+三、解决
+
+官网：https://router.vuejs.org/zh/guide/essentials/history-mode.html#%E5%90%8E%E7%AB%AF%E9%85%8D%E7%BD%AE%E4%BE%8B%E5%AD%90
+
+1、服务器上配置，
+
+apache
+（1）开启模块
+	mod_rewrite.c
+
+	httped.conf文件中
+		找到：#LoadModule rewrite_module modules/mod_rewrite.so，去掉#
+		具体：开始→所有程序→AppServ→Configuration Server→第一项（找到httpd.conf）
+
+（2）www根目录下：
+	.htaccess
+
+
+ngix
+	在根路径上写上：
+	 try_files $uri $uri/ /index.html;
+	
+
+四、打包文件有可能不是直接放在根目录下的
+
+如：kugou下static 与 index.html
+
+1、config/index.js
+build:{
+	assetsPublicPath: '/kugou/' // /kugou/static/css
+}
+重新打包
+
+2、http://localhost/kugou/
+
+kugou上面没有对应任何一个路由
+
+router/index.js
+加上：base:'/kugou'
+
+在开发环境下：http://10.10.13.29:8080/kugou，依然可以正常访问
+
+（1）保护服务端的文件夹信息
+（2）重新打包
+
+
+3、.htaccess也需要修改
+
+/kugou/index.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
