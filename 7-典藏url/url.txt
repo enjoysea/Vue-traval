@@ -13,5 +13,8 @@
 	https://www.kancloud.cn/yunye/axios/234845
 
 5、百度搜索：promise MDN 
-或：阮一峰的文章：ecmascript6
-es6.ruanyifeng.com
+	或：阮一峰的文章：ecmascript6
+	es6.ruanyifeng.com
+
+6、webpack官网
+	https://www.webpackjs.com/loaders/
