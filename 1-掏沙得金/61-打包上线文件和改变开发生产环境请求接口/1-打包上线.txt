@@ -1,0 +1,59 @@
+一、打包命令
+npm run build
+
+1、在package.json中
+"build": "node build/build.js",
+其实走的是：build/build.js
+
+
+
+二、上线一定要关闭sourceMap
+
+1、查看sourceMap
+点击Sources,点击webpack
+
+2、关闭sourceMap
+config/index.js
+	productionSourceMap: false,
+
+
+Time: 41535ms
+
+
+四、服务器环境
+
+http://www.miaov.com/index.html
+
+根目录（root）/www
+
+上线 /dist/index.html
+
+1、将dist中的文件，直接放在根目录
+
+2、一旦上线，代理就变了，所有报错
+
+开发环境，请求数据使用了代理，本质就是访问所在环境的服务器 localhost:8080/proxy
+代理到远程（酷狗）
+
+生产环境，请求数据使用了代理，访问生产环境的服务器，miaov.com/proxy，
+而生成环境并没有使用代理
+
+webpack.dev.conf.js
+'process.env': require('../config/dev.env'),
+
+解决：参考server/index.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
