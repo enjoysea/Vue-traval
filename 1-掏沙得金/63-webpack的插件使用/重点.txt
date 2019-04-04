@@ -1,0 +1,152 @@
+﻿一、webpack官网
+	https://www.webpackjs.com
+
+
+二、四个概念
+1、入口
+2、出口
+3、loader
+4、插件
+
+
+三、详细
+1、初始化
+npm init 
+
+2、webpack安装
+全局：npm i webpack -g
+局部（建议）：npm i webpack -D
+或：npm i webpack --save-dev
+这里安装稳定版本：npm i webpack@3 -D
+
+3、这里app.js被判定为入口文件
+
+4、依赖关系：app.js依赖tools.js，tools.js依赖utils.js
+
+5、新建webpack.config.js
+
+6、这里不能直接使用webpack命令来直接运行，因为不是全局安装的
+
+局部安装，在node_modules下，.bin下有个webpack.cmd
+package.json中
+"scripts": {    
+    "build" : "webpack"
+},
+
+7、打包
+npm run build
+
+8、webpack-learn下创建index.html
+引入：<script src="./build/build.min.js"></script>
+
+9、app.js中加入：document.body.style.background = 'red'
+index.html 中加入：<div>hello</div>
+
+10、重新打包：npm run build
+
+11、将index.css也当成一个模块，在入口文件引入
+import './style/index.css'
+
+12、npm i css-loader style-loader -D
+
+
+13、npm i url-loader -D
+
+14、npm install file-loader -D
+
+
+15、webpack.config.js中写规则
+module: {
+    rules: [
+     
+    ]
+}
+
+
+四、export只用在webpack环境下才能使用，在node环境下是使用不了的
+
+
+五、webpack打包后 开始会有一堆的代码，webpack为了模块化，
+可以称之为webpack的运行时、运行环境
+
+
+六、loader
+参考：https://www.webpackjs.com/loaders
+参考：vue-cli 中build/utils.js
+build/webpack.base.conf.js
+
+css 安装 cssloader
+sass 安装sassloader
+jsx 
+less
+
+
+七、hash配置
+参考：vue-cli 中build/webpack.prod.conf.js
+
+
+八、css抽离
+1、css抽离用插件
+参考：vue-cli中的build/webpack.prod.conf.js中的 ExtractTextPlugin
+
+2、安装插件：ExtractTextPlugin
+	npm i extract-text-webpack-plugin -D
+
+3、在webpack.config.js中
+	const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+4、参考：vue-cli中build/webpack.prod.conf.js
+
+常用的插件：
+
+压缩js：UglifyJsPlugin
+	安装：npm i uglifyjs-webpack-plugin -D
+压缩css: OptimizeCSSPlugin
+	安装：npm i optimize-css-assets-webpack-plugin -D
+
+5、报错解决
+package.json中
+"optimize-css-assets-webpack-plugin": "^5.0.1", 版本太高，与webpack版本冲突
+解决：降低版本
+npm i optimize-css-assets-webpack-plugin@3.2.0 -D
+
+js压缩也要降低
+npm install uglifyjs-webpack-plugin@1.2.7 -D
+
+
+九、Vue每次打包，不需要清空dist,因为里面用到一个插件
+
+十、两个好用的插件
+1、HtmlWebpackPlugin
+根据你的模板生成一个内存中的模板
+
+安装：npm install html-webpack-plugin -D
+最终需要将build中的文件上传到服务器上，不能直接访问
+
+也可以写多页应用
+
+2、可以抽离公共的模块，单独打包成一个js文件
+npm install vue -S
+
+manifest抽离webpack的运行时
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
