@@ -1,0 +1,15 @@
+﻿
+一、build/webpack.dev.conf.js 与 build/webpack.prod.conf.js的共同配置
+	写在：build/webpack.base.conf.js中
+
+
+二、config/index.js
+	bundleAnalyzerReport:true 直接修改为true
+	自动会打开分析的界面
+
+
+三、如果使用less
+	npm install less less-loader --save-dev
+
+	<style lang="less">
+	</style>
