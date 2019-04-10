@@ -18,3 +18,16 @@
 
 6、webpack官网
 	https://www.webpackjs.com/loaders/
+
+7、Mint UI
+	仓库地址：https://github.com/ElemeFE/mint-ui
+
+	文档地址：http://mint-ui.github.io/docs/#/
+
+		中文：http://mint-ui.github.io/docs/#/zh-cn2
+
+		英文：http://mint-ui.github.io/docs/#/en2
+
+
+
+
