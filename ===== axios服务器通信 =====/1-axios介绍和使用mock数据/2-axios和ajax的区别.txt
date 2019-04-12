@@ -1,0 +1,22 @@
+axios和ajax的区别?
+https://www.zhihu.com/question/61962267
+
+浏览器端发起XMLHttpRequests请求
+node端发起http请求
+支持Promise API
+监听请求和返回
+转化请求和返回
+取消请求
+自动转换json数据
+客户端支持抵御XSRF
+
+
+
+定义
+axios 在NPM上的描述是：Promise based HTTP client for the browser and node.js。
+ajax 完整是 Asynchronous Javascript And XML .    异步js和xml，是一种异步请求的技术
+
+
+区别
+axios是通过promise实现对ajax技术的一种封装，就像jQuery实现ajax封装一样
+简单来说：ajax技术实现了网页的局部数据刷新，axios实现了对ajax的封装

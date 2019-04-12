@@ -1,0 +1,7 @@
+一、loading设置方法二
+
+async created(){
+	this.isLoading = true
+	let {data} = await getNewSongs({loading: 2})
+	this.isLoading = false
+}

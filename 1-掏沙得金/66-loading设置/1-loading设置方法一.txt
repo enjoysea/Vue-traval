@@ -1,0 +1,28 @@
+一、loading设置方法一
+
+	1、App.vue
+		mt-spinner type="triple-bounce" v-show="$store.state.isLoading"></mt-spinner>
+
+	2、server/index.js
+		transformRequest(data){
+    			// 发送请求
+    			store.commit('updatedIsLoading',true)
+    			return data;
+  		},
+		transformResponse(data){
+			store.commit('updatedIsLoading', false)
+		}
+
+	3、store/index.js
+		let store = new Vuex.Store({
+  			state:{
+    				isLoading: true
+ 			},
+  			mutations: {
+    				updatedIsLoading(state,loading){
+      					state.isLoading = loading
+    				}
+  			}
+		})		
+		
+		

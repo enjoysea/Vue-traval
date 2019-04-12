@@ -1,0 +1,35 @@
+一、转换请求与响应（transformRequest与transformResponse）
+
+
+二、拦截请求与响应
+
+1、拦截请求
+HTTP.interceptors.request.use(function (config) {   
+    // 可以修改配置	
+    return config; 
+}, function (error) {
+    //请求错误时做某事
+    return Promise.reject(error);
+})
+
+2、拦截响应
+HTTP.interceptors.response.use(function(data){
+      console.log("response")
+      console.log(data)
+      //不return，拿到的数据就是空的
+      return data
+})
+
+========================================================
+
+区别：
+转换请求只能对数据进行转换，return data
+而拦截请求可以对配置进行修改，return config
+
+
+
+
+共同：
+响应请求可以对拿到的数据做进一步的处理，
+拦截响应也可以对拿到的数据做进一步的处理
+都需要 return data

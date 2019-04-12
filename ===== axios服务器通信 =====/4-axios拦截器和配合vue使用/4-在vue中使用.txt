@@ -1,0 +1,17 @@
+﻿在vue中使用
+
+1、安装
+npm install axios vue-axios --save
+
+
+2、在main.js中引入：
+import Axios from 'axios'
+import VueAxios from 'vue-axios'
+
+
+3、作为插件使用，在main.js中
+Vue.use(VueAxios,Axios)
+
+
+4、在组件中使用
+this.$http[method]()
