@@ -49,7 +49,6 @@
         //必须return，否则发送不了数据
         //但是直接这样将data return出去，就会转成字符串：[object Object]的形式，这样发送数据就错了
         return data
-
     }]
   })
 

@@ -1,0 +1,135 @@
+﻿
+一、移动端新适配vw
+1、从屏幕左边到右边是100vw
+2、font-size:13.3333333vw
+3、推导：以750px设计稿为例：
+	750px 100vw
+	1rem = 100px
+	7.5rem = 100vw
+	1rem = 13.3333333vw
+
+	其实就是将：1rem设置为100px，就可以免计算了。
+
+--------------------------------------------------------------------
+
+二、App.vue可以写两个router-view
+
+<router-view name="navBar"/>
+<router-view></router-view>
+
+router/index.js
+
+{
+    path: '/',
+    name: 'Home',
+    title: '新歌',
+    components: {
+      default: NewSongs,
+      navBar: Nav
+    }
+},
+
+--------------------------------------------------------------------
+
+三、路由与导航公用一套数据，将路由配置给拎出去
+
+--------------------------------------------------------------------
+
+四、修饰符.native
+	组件绑定事件，如果不写修饰符.native就是监听组件内部发生的事情
+	监听的是组件中点击了第一个元素的事件，写上修饰符.native
+
+--------------------------------------------------------------------
+
+五、前进、后退 tab没有变化
+用深度监控
+watch:{
+      $route: {
+        handler(){
+          this.selected = this.$route.name
+        },
+        immediate: true // 初始的是时候立即调用一次
+      }
+},
+
+--------------------------------------------------------------------
+
+六、没有逻辑可以直接写在组件中
+<mt-button @click.native="()=>{$router.push({name:'Search'})}" icon="search" slot="right"></mt-button>
+
+--------------------------------------------------------------------
+
+七、返回上一级
+<mt-button icon="back" @click.native="()=>{$router.go(-1)}"></mt-button>
+
+--------------------------------------------------------------------
+
+八、制作Vue插件
+
+server/index.js中：
+
+export default {
+  install(Vue){
+    let o = {
+      getNewSongs,
+      getRankList,
+      getPlist,
+      getSingers
+    }
+
+    /* Object.keys(o).forEach((item) => {
+      Vue.prototype[item] = o[item]
+    }) */
+
+    Vue.prototype.$kugou = o;
+
+  }
+}
+
+main.js中：
+import Methods from '@/server'
+
+// 作为插件，所有的组件都可以找到方法了
+Vue.use(Methods())
+或：Vue.use(Methods)
+
+--------------------------------------------------------------------
+
+九、<style scoped>
+scoped是将css做成一个模块，里面的样式是不可以覆盖外面的样式的
+
+--------------------------------------------------------------------
+
+十、公用组件
+1、整个项目都要用到的，放置在src/components
+2、只有views下用到的，放置在src/views/common
+
+--------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

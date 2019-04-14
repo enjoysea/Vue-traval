@@ -15,7 +15,7 @@
       //语法二（get方式请求）
       //post方式向后端发送数据
       axios.post('https://easy-mock.com/mock/5ab358d8ddee66040df8a07b/list/post',{
-        miaov: "课堂"
+          miaov:"课堂"
       })
         .then((response)=>{
           console.log(response.data)

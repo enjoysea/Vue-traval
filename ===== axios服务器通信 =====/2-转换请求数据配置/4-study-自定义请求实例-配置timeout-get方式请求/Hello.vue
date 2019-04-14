@@ -18,7 +18,7 @@
     //timeout:1
     //有时候等不急，就设置为500ms，就不再请求
     /*如果请求时间了超过 `timeout` 的时间，请求将被中断*/
-    timeout:1000
+    timeout: 1000
   })
 
   export default{

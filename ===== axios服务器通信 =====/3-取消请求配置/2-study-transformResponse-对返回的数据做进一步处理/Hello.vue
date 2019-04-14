@@ -16,7 +16,7 @@
   import queryString from 'queryString'
 
   var HTTP = axios.create({
-    baseURL: 'https://easy-mock.com/mock/5ab358d8ddee66040df8a07b/list',
+    baseURL: 'https://easy-mock.com/mock/5cb029aca845252d98a2b381/axiostest/',
     //timeout:1
     //有时候等不急，就设置为500ms，就不再请求
     //timeout:1000,
@@ -45,7 +45,7 @@
     transformRequest:[function(data){ //data就是传送后端的数据
         //此处console并未打出
         console.log(data)
-        data.age=30//可以在发送前加上一些属性
+        data.age=30 //可以在发送前加上一些属性
         return queryString.stringify(data) //格式化成一个字符串
     }],
 
@@ -61,7 +61,7 @@
   export default{
     name: 'hello',
     created(){
-      HTTP.post('post',{
+      HTTP.post('frontweb',{
           miaov:'ketant', //想转换成miaov=ketant&username=leo
           username:'leo'
       })

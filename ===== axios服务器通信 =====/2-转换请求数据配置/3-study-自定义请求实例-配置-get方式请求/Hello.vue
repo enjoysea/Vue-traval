@@ -14,7 +14,7 @@
    */
   import axios from 'axios'
   var HTTP = axios.create({
-    baseURL: 'https://easy-mock.com/mock/5ab358d8ddee66040df8a07b/list'
+    baseURL: 'https://easy-mock.com/mock/5ab358d8ddee66040df8a07b/list/'
   })
 
   export default{

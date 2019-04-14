@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+//  这种方式不利于管理，是回调地狱
+//  function send(url, callback){
+//    // var xhr = ...
+//
+//    // callback()
+//  }
+//  send('/url1', ()=>{
+//    send('/url2', ()=>{
+//      send('/url3', ()=>{
+//        send('/url4', ()=>{
+//        })
+//      })
+//    })
+//  })
+
+// 异步编程解决方案
+      // 异步回调是异步编程的一种解决方案
+      // 也包含事件通知机制，发布订阅模式
+      // ES6的promise
+
+  // 一、创建的时候就执行了，通常会用函数包一层
+  // 大多数情况，会发送一个请求，或点击发送一个请求，所以要包一层
+  var p = new Promise((resolve, reject)=>{
+    console.log('实例化');
+
+
+    return resolve('成功'); // 后续代码写与不写都一样了
+    reject();
+    console.log('222');
+  });
+
+  // console.log(p);
+  p.then((data)=>{
+    console.log('then:', data)
+  });
+</script>
+</body>
+</html>
