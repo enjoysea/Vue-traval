@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  var p = new Promise((res, rej) => {
+      // res('成功');
+      rej();
+  });
+  p.then((data)=>{
+    console.log(data);
+  });
+  p.catch(()=>{ // catch可以看成是then的第二个回调函数的变种
+    console.log('失败');
+  });
+
+  // .catch连写，链式，控制台就不会报错
+  /*p.then((data)=>{
+    console.log(data);
+  }).catch(()=>{
+    console.log('失败');
+  });*/
+
+
+</script>
+
+</body>
+</html>

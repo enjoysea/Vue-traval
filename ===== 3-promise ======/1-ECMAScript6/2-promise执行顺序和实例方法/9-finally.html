@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  var p = new Promise((res, rej) => {
+      res('成功');
+  });
+  p.then(()=>{
+    console.log(1);
+    // 没写返回值，默认会返回一个状态为成功的promise对象
+  })
+  .then(()=>{
+    console.log(2);
+    a
+    // 没写返回值，默认会返回一个状态为成功的promise对象
+  })
+  .then(()=>{
+    console.log(3);
+    // 没写返回值，默认会返回一个状态为成功的promise对象
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+  .finally(()=>{ // 不管成功还是失败都要走到这里
+    console.log('执行完了……')
+  })
+
+  console.log(333)
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+一、
+npm install -g yarn
+
+
+二、
+server > yarn add express
+
+
+三、
+app.js
+
+
+四、
+node app.js
+
+
+五、
+http://localhost:7777/

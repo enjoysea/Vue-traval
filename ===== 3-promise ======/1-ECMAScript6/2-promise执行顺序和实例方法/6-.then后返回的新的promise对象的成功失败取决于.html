@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  // 这样代码将变成纵向代码，而不是横向代码
+
+  var p = new Promise((res, rej) => {
+      res('成功');
+  });
+  // var p2 = p.then(()=>{ return 111 });
+  // var p2 = p.then(()=>{ return undefined });
+  var p2 = p.then(()=>{ return new Promise((res, rej)=>{rej()})}); // 返回一个状态为失败的promise
+  // var p2 = p.then(()=>{ return new Promise((res, rej)=>{res()})}); // 返回一个状态为成功的promise
+
+  console.log(p2);
+
+  p2.then( data => {
+    console.log('p2 then', data);
+    return new Promise((res, rej)=>{
+      rej();
+    });
+  })
+  .then()
+
+  // 究竟是走 p2的then方法的第一个回调，还是走第二个回调
+  // 也就是 p2的成功/失败取决于return后的返回值
+  // return 的返回值有两种情况
+      // 1、非promise 成功
+      // 2、promise 对象
+            // return new Promise((res, rej)=>{res()})
+            // 取决于里面返回的promise对象成功还是失败
+
+
+</script>
+
+</body>
+</html>

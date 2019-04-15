@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+    Promise
+      构造函数，通过Promise来构建一个异步任务处理对象
+
+  */
+
+
+  let p1 = new Promise((resolve, reject) => {
+    // 有异步任务
+    // resolve(); 1 3
+    reject(); 2 3
+  }).then(
+    () => {
+    console.log('resolve', 1);
+    },
+    () => {
+      console.log('reject', 2);
+    }
+  ).then(
+    () => {
+      console.log('resolve', 3);
+    },
+    () => {
+      console.log('reject', 4);
+    }
+  );
+
+</script>
+
+</body>
+</html>

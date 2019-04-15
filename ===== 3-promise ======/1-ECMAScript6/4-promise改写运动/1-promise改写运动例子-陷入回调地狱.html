@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #box{
+      width: 100px;
+      height: 100px;
+      background: #f00;
+      position: absolute;
+      left: 0;
+      top: 100px;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  function move( obj,attr,target,duration,callback ){
+    var b = parseInt(getComputedStyle(obj)[attr]);
+    var c = target - b;
+    var d = duration;
+    var temp = new Date().getTime();
+    var timer = setInterval( function(){
+      var t = new Date().getTime()-temp;
+      if( t >= d ){
+        clearInterval( timer );
+        t = d;
+      }
+      var v = c/d*t+b ;
+      obj.style[attr] = v + "px";
+      if( t === d ){
+        typeof callback === "function" && callback();
+      }
+    },20 )
+  }
+
+  var box = document.getElementById('box');
+  console.log(box)
+  move( box,'width',200,500, ()=>{
+    move( box,'height',300,500,()=>{
+      move( box,'left',300,500,()=>{
+        move( box,'top',200,500);
+      });
+    });
+  });
+
+
+</script>
+
+</body>
+</html>

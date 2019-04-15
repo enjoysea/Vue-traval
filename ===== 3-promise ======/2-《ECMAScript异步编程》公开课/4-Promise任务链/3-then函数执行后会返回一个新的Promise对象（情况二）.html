@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+      then函数执行后会返回一个新的Promise对象
+      情况二：如果then传入处理函数，那么默认返回一个fullfilled/resolved状态的Promise对象
+    */
+
+    // 情况二
+    new Promise((resolve, reject) => {
+      reject();
+    }).then(()=>{ // 如果then不传入任何东西
+      console.log(1);
+    },()=>{
+      console.log(2); //执行
+    }).then(()=>{
+      console.log(3);
+    },()=>{
+      console.log(4);
+    });
+
+</script>
+
+</body>
+</html>

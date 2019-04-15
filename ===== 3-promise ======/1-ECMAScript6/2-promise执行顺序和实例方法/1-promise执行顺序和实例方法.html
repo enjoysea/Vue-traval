@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 打印顺序：1 5 2 6 3 4
+  /*原理：
+    1、setTimeout是被推到任务队列里去
+    2、先执行宏任务，再执行微任务
+    3、这一次完整的循环结束（宏任务与微任务执行结束）
+    4、下一轮就会执行setTimeout
+
+
+  */
+
+  console.log(1); // 宏任务
+  setTimeout(() => { // 宏任务
+    console.log(3);
+  });
+  setTimeout(() => {// 宏任务
+    console.log(4);
+  });
+  var p = new Promise((res, rej) => {// 宏任务
+      console.log(5);
+      res();
+  });
+  p.then(()=>{ // 微任务
+    console.log(6);
+  });
+  console.log(2);// 宏任务
+</script>
+
+</body>
+</html>

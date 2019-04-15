@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+    Promise
+      构造函数，通过Promise来构建一个异步任务处理对象
+
+  */
+
+
+  let p1 = new Promise((resolve, reject) => {
+    /*
+    *
+    * resolve,reject这两个函数式可以传入参数的，传入的参数将被传递给then中的函数进行使用
+    *
+    * */
+    setTimeout(()=>{
+      var a = 10;
+      // resolve(a);
+      reject('出错了')
+    }, 2000);
+  }).then(v => {
+    console.log(v);
+  }, err => {
+    console.log(err)
+  });
+
+
+</script>
+
+</body>
+</html>

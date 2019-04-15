@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    .box {
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <button>按钮</button>
+  <div class="box"></div>
+
+  <script>
+    var btn = document.querySelector('button');
+    var div = document.querySelector('div');
+
+    btn.onclick = function(){
+     var xhr = new XMLHttpRequest(); // Ajax对象
+     // xhr.open('get', 'http://www.baidu.com', true);
+
+     xhr.onload = function (){
+       console.log(this.responseText);
+     };
+     // xhr.open('get', 'http://localhost:7777', true);
+     xhr.open('get', 'http://localhost:7777', false);
+     // true: 异步
+            // 异步：ajax的事情还没有处理完成的时候，我们点击div，是可以立马变色，ajax的事情并不影响当前页面中其他的效果
+
+     // false: 同步
+            // 当前线程直接处理
+     xhr.send();
+    };
+
+    div.onclick = function(){
+      this.style.background= 'green';
+    };
+  </script>
+
+</body>
+</html>

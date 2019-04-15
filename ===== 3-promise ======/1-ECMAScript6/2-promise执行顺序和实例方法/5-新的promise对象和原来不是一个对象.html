@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  var p = new Promise((res, rej) => {
+      res('成功');
+  // rej();
+  });
+
+  var p2 = p.then((data)=>{
+    // console.log(data)
+  });
+
+  // 新的promise对象和原来不是一个对象
+  console.log(p2 === p);
+
+
+</script>
+
+</body>
+</html>

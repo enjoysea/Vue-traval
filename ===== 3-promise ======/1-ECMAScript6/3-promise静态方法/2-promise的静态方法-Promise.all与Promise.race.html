@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  var p1 = new Promise((res, rej) => {
+    setTimeout(()=>{
+      res('a');
+    }, 1000);
+  });
+  var p2 = new Promise((res, rej) => {
+    setTimeout(()=>{
+      res('b');
+    }, 1500);
+  });
+  var p3 = new Promise((res, rej) => {
+    setTimeout(()=>{
+      res('c');
+    }, 500);
+  });
+
+  // 以上三者必须同时执行完
+  // var p = Promise.all([p1, p2, p3]);
+  var p = Promise.race([p1, p2, p3]);
+  console.log(p);
+  p.then(data => console.log(data)); // c
+
+
+
+</script>
+</body>
+</html>

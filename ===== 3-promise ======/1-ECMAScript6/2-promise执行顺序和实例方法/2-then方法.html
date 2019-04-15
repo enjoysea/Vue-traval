@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  var p = new Promise((res, rej) => {
+      // res('成功');
+      rej();
+  });
+  p.then((data)=>{ // 成功
+    console.log(data);
+  },()=>{ // 失败
+    console.log('失败');
+  });
+
+</script>
+
+</body>
+</html>
