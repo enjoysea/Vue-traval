@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  Promise.resolve({
+    // 有的时候可能不需要new Promise对象
+    // 直接做事
+    then(resolve, reject){
+      console.log('then');
+      resolve('miaov');
+    }
+  }).then(v => {
+    console.log(v);
+  });
+</script>
+
+</body>
+</html>

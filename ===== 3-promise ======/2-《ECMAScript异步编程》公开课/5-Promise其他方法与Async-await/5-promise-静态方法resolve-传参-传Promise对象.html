@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 可能用一个已有的Promise对象进行包装
+  Promise.resolve(new Promise((resolve, reject)=>{
+    reject('错误');
+  })).then(v => {
+    console.log(v);
+  }, err => {
+    console.log(err);
+  });
+</script>
+
+</body>
+</html>
