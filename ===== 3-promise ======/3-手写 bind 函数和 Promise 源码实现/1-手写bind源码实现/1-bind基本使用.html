@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style></style>
+  <script>
+    function func(...arg){
+      console.log(this);
+      console.log(arg);
+    }
+
+    // 注意：this都是指向一个对象
+
+    // 方式一
+    // let newFunc = func.bind([1,2,3], 1, 2, 3, 4, 5);
+    // newFunc();
+
+    // 方式二
+    // let newFunc = func.bind({a: 1}, 1, 2, 3, 4, 5);
+    // newFunc();
+
+    // 方式三
+    // this指向1的包装对象 Number {1}
+       let newFunc = func.bind(1, 1, 2, 3, 4, 5);
+       newFunc();
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

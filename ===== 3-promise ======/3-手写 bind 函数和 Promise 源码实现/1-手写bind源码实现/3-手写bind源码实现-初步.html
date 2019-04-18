@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style></style>
+  <script>
+    // 给函数扩展方法
+    Function.prototype.customeBind = function (thisArg, ...list) {
+      // 谁调用这个函数，this就指向谁（这里this指向func）
+      // 目标函数
+      let self = this;
+      console.log(self);
+
+      // 返回的新函数
+      return function(...arg2){
+        self.apply(thisArg, [...list, ...arg2]);
+      }
+
+    }
+
+    // 给数组扩展方法用Array
+    // Array.prototype.xxx
+
+    function func(...arg){
+      console.log(this);
+      console.log(arg);
+    }
+
+    func.prototype.miaov = function(){
+      console.log(123);
+    };
+
+    // 原生bind函数
+    let newFunc = func.bind({a:1}, 1, 2, 3, 4, 5);
+
+    // 自己封装bind函数
+    // 第一个参数是改变func的this指向的
+    // 第二个参数是给func函数传入的参数列表
+
+    // 1, 2, 3, 4传入到...list
+    // 5, 6, 7, 8传入到...arg2
+    let newFunc2 = func.customeBind({a:1}, 1, 2, 3, 4);
+
+    // 对比原生与自己封装的bind
+    newFunc(5, 6, 7, 8);
+    console.log('-------------');
+    newFunc2(5, 6, 7, 8);
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

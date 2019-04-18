@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  function func(...arg){
+    console.log(this);
+    console.log(arg);
+  }
+  func.apply(document,[1,2,3,4,5])
+
+//  function func(arg1, arg2, arg3, arg4, arg5){
+//    console.log(this);
+//    console.log(arg1,arg2,arg3,arg4,arg5);
+//  }
+//  func.apply(document,[1,2,3,4,5]);
+
+
+// 王允说apply是内部实现的，无法模拟。
+// apply要去学一下v8引擎中的源码了。
+
+// 面试只会让去模拟bind，不会让去写apply。
+
+
+</script>
+
+</body>
+</html>

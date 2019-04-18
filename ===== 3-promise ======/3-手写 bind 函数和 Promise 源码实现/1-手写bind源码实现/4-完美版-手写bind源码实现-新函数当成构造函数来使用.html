@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style></style>
+  <script>
+
+    /*
+       目标函数：调用bind的函数，func.bind func就称之为是目标函数
+       新函数：bind返回的函数，let newFunc = func.bind() newFunc 就称为新函数
+    */
+
+    /*
+       封装bind函数两个关键点：
+         1、返回的函数作为构造函数，新函数要继承目标函数的原型
+         2、一旦把新函数当成构造函数，目标函数的this应该指向实例对象
+    */
+
+
+    // 给函数扩展方法
+    Function.prototype.customeBind = function (thisArg, ...list) {
+      // 谁调用这个函数，this就指向谁（这里this指向func）
+      // 目标函数
+
+      // 自己实现的bind函数，如果把返回的新函数当成了构造函数，
+      // 此时会遇到问题，就是找不到目标函数原型上的方法
+
+      // 解决：新函数继承目标函数的原型
+
+
+      let self = this;
+      // console.log(self);
+
+      let Bound = function(...arg2){
+        // 如果这个函数作为构造函数，目标函数的this应该指向的是实例对象
+        // 如果这个不是作为构造函数，目标函数中的this还指向thisArg
+        let thisArgSelf = this instanceof Bound ? this : thisArg;
+        self.apply(thisArgSelf, [...list, ...arg2]);
+      }
+
+      // Object.create(self.prototype)是以某个对象为原型，创造出一个新的对象
+
+      // 原型继承
+      // Object.create用来创建以某一个对象作为原型的对象的（王允）
+      // 方法创建一个新对象，使用现有的对象来提供新创建的对象的proto（简书）
+      Bound.prototype = Object.create(self.prototype);
+      Bound.prototype.constructor = self;
+
+      // 返回的新函数
+      return Bound
+    }
+
+    // 给数组扩展方法用Array
+    // Array.prototype.xxx
+
+    function func (...arg) {
+      console.log(this);
+      console.log(arg);
+    }
+
+    func.prototype.miaov = function(){
+      console.log(123);
+    };
+
+    // 原生bind函数
+    let newFunc = func.bind({a:1}, 1, 2, 3, 4, 5);
+
+    // 自己封装bind函数
+    // 第一个参数是改变func的this指向的
+    // 第二个参数是给func函数传入的参数列表
+
+    // 1, 2, 3, 4传入到...list
+    // 5, 6, 7, 8传入到...arg2
+    let newFunc2 = func.customeBind({a:1}, 1, 2, 3, 4);
+
+    // 对比原生与自己封装的bind
+    let f1 = new newFunc(5, 6, 7, 8);
+    console.log(f1);
+    console.log(f1.miaov) // 能找到
+
+    console.log('-------------');
+    let f2 = new newFunc2(5, 6, 7, 8);
+    console.log(f2);
+    console.log(f2.miaov) // 找不到，undefined
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
