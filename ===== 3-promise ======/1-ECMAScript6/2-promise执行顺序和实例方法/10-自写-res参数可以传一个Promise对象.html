@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // var p1 = new Promise((res, rej)=>{rej('出错了！')});
+
+  // resolve参数可以传递一个Promise对象，这个对象的状态决定下一步走then还是catch
+  var p = new Promise((resolve, reject) => {
+      resolve(new Promise((res, rej)=>{
+        rej('出错了！');
+      }));
+  });
+  p.then((data)=>{
+    console.log(data);
+  }).catch((err)=>{
+    console.log(err);
+  });
+
+
+
+</script>
+
+</body>
+</html>
